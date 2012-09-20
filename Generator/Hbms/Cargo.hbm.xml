@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Cargo" table="`Cargo`" schema="`dbo`">
+		<id name="IdCargo" access="property" column="`id_cargo`">
+			<generator class="native" />
+		</id>
+		<property name="DsCargo" type="String" column="`ds_cargo`" length="50" />
+		<property name="DtAlteracaoCargo" type="DateTime" column="`dt_alteracao_cargo`" />
+		<property name="DtCadastroCargo" type="DateTime" column="`dt_cadastro_cargo`" />
+		<property name="DtDesativacaoCargo" type="DateTime" column="`dt_desativacao_cargo`" />
+		<set name="InterlocutorPessoaJuridicas" inverse="true">
+			<key column="`id_cargo`" />
+			<one-to-many class="InterlocutorPessoaJuridica" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

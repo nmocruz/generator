@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="SegmentoFornecedor" table="`Segmento_Fornecedor`" schema="`dbo`">
+		<id name="IdSegmentoFornecSegfor" access="property" column="`id_segmento_fornec_segfor`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoSegfor" type="DateTime" column="`dt_alteracao_segfor`" />
+		<property name="DtCadastroSegfor" type="DateTime" column="`dt_cadastro_segfor`" />
+		<property name="DtDesativacaoSegfor" type="DateTime" column="`dt_desativacao_segfor`" />
+		<many-to-one name="EstruturaProduto" class="EstruturaProduto" column="`id_estrutura_produto_estprd`" not-null="true" fetch="select" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

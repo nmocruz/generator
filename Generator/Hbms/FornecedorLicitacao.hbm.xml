@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="FornecedorLicitacao" table="`Fornecedor_Licitacao`" schema="`dbo`">
+		<id name="IdFornecedorLicitacaoForlic" access="property" column="`id_fornecedor_licitacao_forlic`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoForlic" type="DateTime" column="`dt_alteracao_forlic`" />
+		<property name="DtCadastroForlic" type="DateTime" column="`dt_cadastro_forlic`" />
+		<property name="DtClassificacaoForlic" type="DateTime" column="`dt_classificacao_forlic`" />
+		<property name="DtDesclassificacaoForlic" type="DateTime" column="`dt_desclassificacao_forlic`" />
+		<property name="DtReclassificacaoForlic" type="DateTime" column="`dt_reclassificacao_forlic`" />
+		<property name="SnPresenteAbertPregaoForlic" type="Boolean" column="`sn_presente_abert_pregao_forlic`" />
+		<set name="DesempateDisputaLotes" inverse="true">
+			<key column="`id_fornecedor_licitacao_forlic`" />
+			<one-to-many class="DesempateDisputaLote" />
+		</set>
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<set name="LanceLoteLicitacaos" inverse="true">
+			<key column="`id_fornecedor_licitacao_forlic`" />
+			<one-to-many class="LanceLoteLicitacao" />
+		</set>
+		<many-to-one name="Licitacao" class="Licitacao" column="`id_licitacao_lic`" not-null="true" fetch="select" />
+		<set name="PropostaLoteLicitacaos" inverse="true">
+			<key column="`id_fornecedor_licitacao_forlic`" />
+			<one-to-many class="PropostaLoteLicitacao" />
+		</set>
+		<set name="RecursoLoteLicitacaos" inverse="true">
+			<key column="`id_fornecedor_licitacao_forlic`" />
+			<one-to-many class="RecursoLoteLicitacao" />
+		</set>
+		<many-to-one name="TipoPorteEmpresa" class="TipoPorteEmpresa" column="`id_tipo_porte_empresa_tpemp`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_credenciado_ususis`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

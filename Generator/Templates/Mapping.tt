@@ -1,0 +1,24 @@
+﻿<#@ template debug="true"  hostspecific="true" language="C#" #>
+<#@ import namespace="AGenerator"  #>
+<#@ import namespace="AGenerator.Templating"  #>
+<#@ output extension=".cs" #>
+<#    
+    
+    TextTemplateHost c = Host as TextTemplateHost;
+    EntityModel model = c.Model;
+    TypeDefinition definition = c.TypeDefinition;
+
+    foreach (var item in definition.UsingNamespaces.split(';'))
+    {
+		Write("using {0}",item);  	 
+    }
+       
+    
+#>
+
+namespace <#= string.IsNullOrWhiteSpace(definition.Modulo) ?  definition.Namespace : string.Format( definition.Namespace,definition.Modulo) #>
+{
+    public partial class <#= model.ClassName #>Repository : Repository<<#= model.ClassName #>> {
+        
+    }
+}

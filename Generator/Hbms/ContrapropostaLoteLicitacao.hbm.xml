@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ContrapropostaLoteLicitacao" table="`Contraproposta_Lote_Licitacao`" schema="`dbo`">
+		<id name="IdCpropLoteLicitacaoCplotlic" access="property" column="`id_cprop_lote_licitacao_cplotlic`">
+			<generator class="native" />
+		</id>
+		<property name="DsContrapropostaCplotlic" type="String" column="`ds_contraproposta_cplotlic`" length="250" />
+		<property name="DsRespostaCplotlic" type="String" column="`ds_resposta_cplotlic`" length="250" />
+		<property name="DtAlteracaoCplotlic" type="DateTime" column="`dt_alteracao_cplotlic`" />
+		<property name="DtCadastroCplotlic" type="DateTime" column="`dt_cadastro_cplotlic`" />
+		<property name="DtCancelamentoCplotlic" type="DateTime" column="`dt_cancelamento_cplotlic`" />
+		<property name="DtRespostaCplotlic" type="DateTime" column="`dt_resposta_cplotlic`" />
+		<property name="SnContrapropostaCplotlic" type="Boolean" column="`sn_contraproposta_cplotlic`" />
+		<property name="VlContrapropostaCplotlic" type="Decimal" column="`vl_contraproposta_cplotlic`" />
+		<many-to-one name="GanhadorLoteLicitacao" class="GanhadorLoteLicitacao" column="`id_ganhador_lote_licitacao_glotlic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

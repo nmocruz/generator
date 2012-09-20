@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="UsuarioSistema" table="`Usuario_Sistema`" schema="`dbo`">
+		<id name="UserId" access="property" column="`user_id`">
+			<generator class="native" />
+		</id>
+		<property name="CdUsuarioSistemaUsusis" type="String" column="`cd_usuario_sistema_ususis`" length="20" />
+		<property name="DtAlteracaoUsusis" type="DateTime" column="`dt_alteracao_ususis`" />
+		<property name="DtCadastroUsusis" type="DateTime" column="`dt_cadastro_ususis`" />
+		<property name="DtDesativacaoUsusis" type="DateTime" column="`dt_desativacao_ususis`" />
+		<set name="AjusteOfertaCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="AjusteOfertaCotacao" />
+		</set>
+		<set name="AnexoProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="AnexoProduto" />
+		</set>
+		<set name="ApresentacaoProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ApresentacaoProduto" />
+		</set>
+		<many-to-one name="AspnetUser" class="AspnetUser" column="`user_id_membership`" not-null="true" fetch="select" />
+		<set name="AvaliacaoFornecedorCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="AvaliacaoFornecedorComprador" />
+		</set>
+		<set name="AvaliacaoFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="AvaliacaoFornecedor" />
+		</set>
+		<set name="Cargos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Cargo" />
+		</set>
+		<many-to-one name="CentralCompra" class="CentralCompra" column="`id_central_compra_ctrcom`" not-null="false" fetch="select" />
+		<set name="CentralCompras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="CentralCompra" />
+		</set>
+		<set name="ClasseProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ClasseProduto" />
+		</set>
+		<set name="ClassificacaoProdutoMarcas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ClassificacaoProdutoMarca" />
+		</set>
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="false" fetch="select" />
+		<set name="CompradorAcompUsuarioSis" inverse="true">
+			<key column="`id_user_acomp_compr_ususis`" />
+			<one-to-many class="CompradorAcompUsuarioSi" />
+		</set>
+		<set name="CompradorAcompUsuarioSis1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="CompradorAcompUsuarioSi" />
+		</set>
+		<set name="Compradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Comprador" />
+		</set>
+		<set name="ConceitoAvaliacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ConceitoAvaliacao" />
+		</set>
+		<set name="CondicaoPagamentos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="CondicaoPagamento" />
+		</set>
+		<set name="ContrapropostaLoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ContrapropostaLoteLicitacao" />
+		</set>
+		<set name="ContrarrazaoLoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ContrarrazaoLoteLicitacao" />
+		</set>
+		<set name="ContratoCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ContratoComprador" />
+		</set>
+		<set name="CorProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="CorProduto" />
+		</set>
+		<set name="Cotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Cotacao" />
+		</set>
+		<set name="DeParaCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaComprador" />
+		</set>
+		<set name="DeParaCondicaoPagamentos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaCondicaoPagamento" />
+		</set>
+		<set name="DeParaFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaFornecedor" />
+		</set>
+		<set name="DeParaMarcas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaMarca" />
+		</set>
+		<set name="DeParaProdutoMarcas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaProdutoMarca" />
+		</set>
+		<set name="DeParaProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaProduto" />
+		</set>
+		<set name="DeParaSetorCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaSetorComprador" />
+		</set>
+		<set name="DeParaUnidadeProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DeParaUnidadeProduto" />
+		</set>
+		<set name="DesempateDisputaLotes" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DesempateDisputaLote" />
+		</set>
+		<set name="DocumentoCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DocumentoComprador" />
+		</set>
+		<set name="DocumentoFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DocumentoFornecedor" />
+		</set>
+		<set name="DocumentoLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DocumentoLicitacao" />
+		</set>
+		<set name="DocumentoProdutoFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="DocumentoProdutoFornecedor" />
+		</set>
+		<set name="EmbalagemProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="EmbalagemProduto" />
+		</set>
+		<set name="EnderecoPessoas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="EnderecoPessoa" />
+		</set>
+		<set name="EquipeLicitacaos" inverse="true">
+			<key column="`id_user_eqp_licitacao_ususis`" />
+			<one-to-many class="EquipeLicitacao" />
+		</set>
+		<set name="EquipeLicitacaos1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="EquipeLicitacao" />
+		</set>
+		<set name="EstruturaProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="EstruturaProduto" />
+		</set>
+		<set name="FaturaOrdemCompras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FaturaOrdemCompra" />
+		</set>
+		<set name="FaturaProdutoOrdemCompras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FaturaProdutoOrdemCompra" />
+		</set>
+		<set name="FeriadoNacionals" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FeriadoNacional" />
+		</set>
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="false" fetch="select" />
+		<set name="FornecedorAcompUsuarioSis" inverse="true">
+			<key column="`id_user_acomp_fornec_ususis`" />
+			<one-to-many class="FornecedorAcompUsuarioSi" />
+		</set>
+		<set name="FornecedorAcompUsuarioSis1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FornecedorAcompUsuarioSi" />
+		</set>
+		<set name="FornecedorCotacaos" inverse="true">
+			<key column="`id_user_resp_forcot`" />
+			<one-to-many class="FornecedorCotacao" />
+		</set>
+		<set name="FornecedorCotacaos1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FornecedorCotacao" />
+		</set>
+		<set name="FornecedorLicitacaos" inverse="true">
+			<key column="`id_user_credenciado_ususis`" />
+			<one-to-many class="FornecedorLicitacao" />
+		</set>
+		<set name="FornecedorLicitacaos1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FornecedorLicitacao" />
+		</set>
+		<set name="FornecedorProdMarcaCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FornecedorProdMarcaCotacao" />
+		</set>
+		<set name="Fornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Fornecedor" />
+		</set>
+		<set name="FuncaoSistemas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="FuncaoSistema" />
+		</set>
+		<set name="GanhadorLoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="GanhadorLoteLicitacao" />
+		</set>
+		<set name="HistoricoStatusCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="HistoricoStatusCotacao" />
+		</set>
+		<set name="HistoricoStatusGanhadorLotes" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="HistoricoStatusGanhadorLote" />
+		</set>
+		<set name="HistoricoStatusLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="HistoricoStatusLicitacao" />
+		</set>
+		<set name="HistoricoStatusLotes" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="HistoricoStatusLote" />
+		</set>
+		<set name="HistoricoStatusOrdemCompras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="HistoricoStatusOrdemCompra" />
+		</set>
+		<set name="HistoricoStatusProposta" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="HistoricoStatusPropostum" />
+		</set>
+		<set name="HistoricoValorCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="HistoricoValorCotacao" />
+		</set>
+		<set name="ImagemProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ImagemProduto" />
+		</set>
+		<set name="InterlocutorPessoaJuridicas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="InterlocutorPessoaJuridica" />
+		</set>
+		<set name="LanceLoteLicitacaos" inverse="true">
+			<key column="`id_user_canc_lance_ususis`" />
+			<one-to-many class="LanceLoteLicitacao" />
+		</set>
+		<set name="LanceLoteLicitacaos1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="LanceLoteLicitacao" />
+		</set>
+		<set name="Licitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Licitacao" />
+		</set>
+		<set name="LogTransacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="LogTransacao" />
+		</set>
+		<set name="LoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="LoteLicitacao" />
+		</set>
+		<set name="MarcaFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="MarcaFornecedor" />
+		</set>
+		<set name="Marcas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Marca" />
+		</set>
+		<set name="MensagemLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="MensagemLicitacao" />
+		</set>
+		<set name="MensagemPadraos" inverse="true">
+			<key column="`id_user_mens_padrao_msgpad`" />
+			<one-to-many class="MensagemPadrao" />
+		</set>
+		<set name="MensagemPadraos1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="MensagemPadrao" />
+		</set>
+		<set name="MenuSistemas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="MenuSistema" />
+		</set>
+		<set name="ModuloSistemas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ModuloSistema" />
+		</set>
+		<many-to-one name="NivelAprovacaoPedido" class="NivelAprovacaoPedido" column="`id_nivel_aprovacao_ped_naprped`" not-null="false" fetch="select" />
+		<set name="NivelAprovacaoPedidos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="NivelAprovacaoPedido" />
+		</set>
+		<set name="NivelEstruturas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="NivelEstrutura" />
+		</set>
+		<set name="OrdemCompraEntradaIntegras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="OrdemCompraEntradaIntegra" />
+		</set>
+		<set name="OrdemCompras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="OrdemCompra" />
+		</set>
+		<set name="OrdemCompraSaidaIntegras" inverse="true">
+			<key column="`id_user_aprovacao_ususis`" />
+			<one-to-many class="OrdemCompraSaidaIntegra" />
+		</set>
+		<set name="OrdemCompraSaidaIntegras1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="OrdemCompraSaidaIntegra" />
+		</set>
+		<set name="PadraoSistemaIntegrados" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="Pais" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Pai" />
+		</set>
+		<set name="PedidoModelos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="PedidoModelo" />
+		</set>
+		<many-to-one name="PerfilAcesso" class="PerfilAcesso" column="`id_perfil_acesso_perace`" not-null="true" fetch="select" />
+		<set name="PerfilAcessoFuncaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="PerfilAcessoFuncao" />
+		</set>
+		<set name="PerfilAcessos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="PerfilAcesso" />
+		</set>
+		<many-to-one name="Pessoa" class="Pessoa" column="`id_pessoa`" not-null="true" fetch="select" />
+		<set name="Pessoas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Pessoa" />
+		</set>
+		<set name="ProdMarcaContratoCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdMarcaContratoComprador" />
+		</set>
+		<set name="ProdutoCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoComprador" />
+		</set>
+		<set name="ProdutoCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoCotacao" />
+		</set>
+		<set name="ProdutoFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoFornecedor" />
+		</set>
+		<set name="ProdutoLanceLoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoLanceLoteLicitacao" />
+		</set>
+		<set name="ProdutoLoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoLoteLicitacao" />
+		</set>
+		<set name="ProdutoMarcaCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoMarcaComprador" />
+		</set>
+		<set name="ProdutoMarcas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoMarca" />
+		</set>
+		<set name="ProdutoOrdemCompraEntradaInts" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoOrdemCompraEntradaInt" />
+		</set>
+		<set name="ProdutoOrdemCompras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoOrdemCompra" />
+		</set>
+		<set name="ProdutoOrdemCompraSaidaInts" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoOrdemCompraSaidaInt" />
+		</set>
+		<set name="ProdutoPedidoModelos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoPedidoModelo" />
+		</set>
+		<set name="ProdutoRequisicaoEntradaInts" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProdutoRequisicaoEntradaInt" />
+		</set>
+		<set name="Produtos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="Produto" />
+		</set>
+		<set name="ProgrEntregaProdutoCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="ProgrEntregaProdutoCotacao" />
+		</set>
+		<set name="PropostaLoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="PropostaLoteLicitacao" />
+		</set>
+		<set name="QuestionamentoSolicitacaoLicitacaos" inverse="true">
+			<key column="`id_user_quest_solic_licitacao_qslic`" />
+			<one-to-many class="QuestionamentoSolicitacaoLicitacao" />
+		</set>
+		<set name="QuestionamentoSolicitacaoLicitacaos1" inverse="true">
+			<key column="`id_user_resposta_qslic`" />
+			<one-to-many class="QuestionamentoSolicitacaoLicitacao" />
+		</set>
+		<set name="QuestionamentoSolicitacaoLicitacaos2" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="QuestionamentoSolicitacaoLicitacao" />
+		</set>
+		<set name="RamoAtividadeProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="RamoAtividadeProduto" />
+		</set>
+		<set name="RamoAtividades" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="RamoAtividade" />
+		</set>
+		<set name="RecursoLoteLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="RecursoLoteLicitacao" />
+		</set>
+		<set name="RegiaoGeograficas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="RegiaoGeografica" />
+		</set>
+		<set name="RegraMarcaSaidaIntegras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="RegraMarcaSaidaIntegra" />
+		</set>
+		<set name="RequisicaoEntradaIntegras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="RequisicaoEntradaIntegra" />
+		</set>
+		<set name="SegmentoFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="SegmentoFornecedor" />
+		</set>
+		<set name="SelecaoOfertaCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="SelecaoOfertaCotacao" />
+		</set>
+		<set name="SetorCompradors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="SetorComprador" />
+		</set>
+		<set name="SetorUsuarioSistemas" inverse="true">
+			<key column="`id_user_setor_compr_ususis`" />
+			<one-to-many class="SetorUsuarioSistema" />
+		</set>
+		<set name="SetorUsuarioSistemas1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="SetorUsuarioSistema" />
+		</set>
+		<set name="SistemaIntegrados" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="SistemaIntegrado" />
+		</set>
+		<set name="StatusCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="StatusCotacao" />
+		</set>
+		<set name="StatusGanhadorLotes" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="StatusGanhadorLote" />
+		</set>
+		<set name="StatusLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="StatusLicitacao" />
+		</set>
+		<set name="StatusLotes" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="StatusLote" />
+		</set>
+		<set name="StatusOrdemCompras" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="StatusOrdemCompra" />
+		</set>
+		<set name="StatusProposta" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="StatusPropostum" />
+		</set>
+		<set name="SubMarcas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="SubMarca" />
+		</set>
+		<set name="TelefoneEnderecoPessoas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TelefoneEnderecoPessoa" />
+		</set>
+		<set name="TipoAnexos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoAnexo" />
+		</set>
+		<set name="TipoClassificacaoProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoClassificacaoProduto" />
+		</set>
+		<set name="TipoCotacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoCotacao" />
+		</set>
+		<set name="TipoCriterioSelecaoProposta" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoCriterioSelecaoPropostum" />
+		</set>
+		<set name="TipoDisputaLotes" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoDisputaLote" />
+		</set>
+		<set name="TipoDocumentoLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoDocumentoLicitacao" />
+		</set>
+		<set name="TipoDocumentoObrigatorios" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoDocumentoObrigatorio" />
+		</set>
+		<set name="TipoDocumentos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoDocumento" />
+		</set>
+		<set name="TipoFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoFornecedor" />
+		</set>
+		<set name="TipoLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoLicitacao" />
+		</set>
+		<set name="TipoModalidadeLicitacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoModalidadeLicitacao" />
+		</set>
+		<set name="TipoMoedas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoMoeda" />
+		</set>
+		<set name="TipoParticipacaoFornecedors" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoParticipacaoFornecedor" />
+		</set>
+		<set name="TipoPorteEmpresas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoPorteEmpresa" />
+		</set>
+		<set name="TipoTransacaos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="TipoTransacao" />
+		</set>
+		<set name="UnidadeFederativas" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="UnidadeFederativa" />
+		</set>
+		<set name="UnidadeFederativaUsuarioSistemas" inverse="true">
+			<key column="`id_user_uf_ususis`" />
+			<one-to-many class="UnidadeFederativaUsuarioSistema" />
+		</set>
+		<set name="UnidadeFederativaUsuarioSistemas1" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="UnidadeFederativaUsuarioSistema" />
+		</set>
+		<set name="UnidadeProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="UnidadeProduto" />
+		</set>
+		<set name="VoltagemProdutos" inverse="true">
+			<key column="`user_id_ususis`" />
+			<one-to-many class="VoltagemProduto" />
+		</set>
+	</class>
+</hibernate-mapping>

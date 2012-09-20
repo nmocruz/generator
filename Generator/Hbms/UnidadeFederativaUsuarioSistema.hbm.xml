@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="UnidadeFederativaUsuarioSistema" table="`Unidade_Federativa_Usuario_Sistema`" schema="`dbo`">
+		<id name="IdUfUsuSistemaUfusis" access="property" column="`id_uf_usu_sistema_ufusis`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoUfusis" type="DateTime" column="`dt_alteracao_ufusis`" />
+		<property name="DtCadastroUfusis" type="DateTime" column="`dt_cadastro_ufusis`" />
+		<property name="DtDesativacaoUfusis" type="DateTime" column="`dt_desativacao_ufusis`" />
+		<many-to-one name="UnidadeFederativa" class="UnidadeFederativa" column="`id_unidade_federativa_unifed`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_uf_ususis`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

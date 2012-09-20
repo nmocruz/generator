@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="NivelAprovacaoPedido" table="`Nivel_Aprovacao_Pedido`" schema="`dbo`">
+		<id name="IdNivelAprovacaoPedNaprped" access="property" column="`id_nivel_aprovacao_ped_naprped`">
+			<generator class="native" />
+		</id>
+		<property name="DsNivelAprovacaoPedNaprped" type="String" column="`ds_nivel_aprovacao_ped_naprped`" length="50" />
+		<property name="DtAlteracaoNaprped" type="DateTime" column="`dt_alteracao_naprped`" />
+		<property name="DtCadastroNaprped" type="DateTime" column="`dt_cadastro_naprped`" />
+		<property name="DtFimValidadeNaprped" type="DateTime" column="`dt_fim_validade_naprped`" />
+		<property name="DtIniValidadeNaprped" type="DateTime" column="`dt_ini_validade_naprped`" />
+		<property name="VlLimiteAprovacaoNaprped" type="Decimal" column="`vl_limite_aprovacao_naprped`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="SetorComprador" class="SetorComprador" column="`id_setor_comprador_setcom`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+		<set name="UsuarioSistemas" inverse="true">
+			<key column="`id_nivel_aprovacao_ped_naprped`" />
+			<one-to-many class="UsuarioSistema" />
+		</set>
+	</class>
+</hibernate-mapping>

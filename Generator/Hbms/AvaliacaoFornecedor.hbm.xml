@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="AvaliacaoFornecedor" table="`Avaliacao_Fornecedor`" schema="`dbo`">
+		<id name="IdAvaliacaoFornecedorAvafor" access="property" column="`id_avaliacao_fornecedor_avafor`">
+			<generator class="native" />
+		</id>
+		<property name="DtCadastroAvafor" type="DateTime" column="`dt_cadastro_avafor`" />
+		<property name="VlNotaMediaAvaliacaoAvafor" type="Decimal" column="`vl_nota_media_avaliacao_avafor`" />
+		<many-to-one name="ConceitoAvaliacao" class="ConceitoAvaliacao" column="`id_conceito_avaliacao_conava`" not-null="true" fetch="select" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

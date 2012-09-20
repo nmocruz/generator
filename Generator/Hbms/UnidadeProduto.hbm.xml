@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="UnidadeProduto" table="`Unidade_Produto`" schema="`dbo`">
+		<id name="IdUnidadeProdutoUniprd" access="property" column="`id_unidade_produto_uniprd`">
+			<generator class="native" />
+		</id>
+		<property name="DsAbrevUnidadeProdUniprd" type="String" column="`ds_abrev_unidade_prod_uniprd`" length="5" />
+		<property name="DsUnidadeProdutoUniprd" type="String" column="`ds_unidade_produto_uniprd`" length="50" />
+		<property name="DtAlteracaoUniprd" type="DateTime" column="`dt_alteracao_uniprd`" />
+		<property name="DtCadastroUniprd" type="DateTime" column="`dt_cadastro_uniprd`" />
+		<property name="DtDesativacaoUniprd" type="DateTime" column="`dt_desativacao_uniprd`" />
+		<set name="DeParaUnidadeProdutos" inverse="true">
+			<key column="`id_unidade_produto_uniprd`" />
+			<one-to-many class="DeParaUnidadeProduto" />
+		</set>
+		<set name="ProdutoOrdemCompraSaidaInts" inverse="true">
+			<key column="`id_unidade_compra_uniprd`" />
+			<one-to-many class="ProdutoOrdemCompraSaidaInt" />
+		</set>
+		<set name="Produtos" inverse="true">
+			<key column="`id_unidade_compra_uniprd`" />
+			<one-to-many class="Produto" />
+		</set>
+		<set name="Produtos1" inverse="true">
+			<key column="`id_unidade_medida_uniprd`" />
+			<one-to-many class="Produto" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

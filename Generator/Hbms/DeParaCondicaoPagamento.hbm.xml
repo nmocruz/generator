@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="DeParaCondicaoPagamento" table="`DE_PARA_Condicao_Pagamento`" schema="`dbo`">
+		<id name="IdDeparaCondPagtoDpconpag" access="property" column="`id_depara_cond_pagto_dpconpag`">
+			<generator class="native" />
+		</id>
+		<property name="CdCondPagtoSistIntDpconpag" type="String" column="`cd_cond_pagto_sist_int_dpconpag`" length="20" />
+		<property name="DtAlteracaoDpconpag" type="DateTime" column="`dt_alteracao_dpconpag`" />
+		<property name="DtFimVigenciaDpconpag" type="DateTime" column="`dt_fim_vigencia_dpconpag`" />
+		<property name="DtIniVigenciaDpconpag" type="DateTime" column="`dt_ini_vigencia_dpconpag`" />
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="true" fetch="select" />
+		<many-to-one name="PadraoSistemaIntegrado" class="PadraoSistemaIntegrado" column="`id_padrao_sistema_int_psisint`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

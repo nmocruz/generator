@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="StatusLicitacao" table="`Status_Licitacao`" schema="`dbo`">
+		<id name="IdStatusLicitacaoStlic" access="property" column="`id_status_licitacao_stlic`">
+			<generator class="native" />
+		</id>
+		<property name="DsStatusLicitacaoStlic" type="String" column="`ds_status_licitacao_stlic`" length="50" />
+		<property name="DtAlteracaoStlic" type="DateTime" column="`dt_alteracao_stlic`" />
+		<property name="DtCadastroStlic" type="DateTime" column="`dt_cadastro_stlic`" />
+		<property name="DtDesativacaoStlic" type="DateTime" column="`dt_desativacao_stlic`" />
+		<property name="SnStatusDefinitivoStlic" type="Boolean" column="`sn_status_definitivo_stlic`" />
+		<set name="HistoricoStatusLicitacaos" inverse="true">
+			<key column="`id_status_licitacao_stlic`" />
+			<one-to-many class="HistoricoStatusLicitacao" />
+		</set>
+		<set name="MensagemLicitacaos" inverse="true">
+			<key column="`id_status_licitacao_stlic`" />
+			<one-to-many class="MensagemLicitacao" />
+		</set>
+		<set name="QuestionamentoSolicitacaoLicitacaos" inverse="true">
+			<key column="`id_status_licitacao_stlic`" />
+			<one-to-many class="QuestionamentoSolicitacaoLicitacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

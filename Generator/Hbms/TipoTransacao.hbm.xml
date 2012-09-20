@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TipoTransacao" table="`Tipo_Transacao`" schema="`dbo`">
+		<id name="IdTipoTransacaoTptra" access="property" column="`id_tipo_transacao_tptra`">
+			<generator class="native" />
+		</id>
+		<property name="CdTipoTransacaoTptra" type="String" column="`cd_tipo_transacao_tptra`" length="1" />
+		<property name="DsTipoTransacaoTptra" type="String" column="`ds_tipo_transacao_tptra`" length="50" />
+		<property name="DtAlteracaoTptra" type="DateTime" column="`dt_alteracao_tptra`" />
+		<property name="DtCadastroTptra" type="DateTime" column="`dt_cadastro_tptra`" />
+		<property name="DtDesativacaoTptra" type="DateTime" column="`dt_desativacao_tptra`" />
+		<set name="LogTransacaos" inverse="true">
+			<key column="`id_tipo_transacao_tptra`" />
+			<one-to-many class="LogTransacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

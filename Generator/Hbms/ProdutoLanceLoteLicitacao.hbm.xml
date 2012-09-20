@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdutoLanceLoteLicitacao" table="`Produto_Lance_Lote_Licitacao`" schema="`dbo`">
+		<id name="IdProdLanceLoteLicitacaoPllotlic" access="property" column="`id_prod_lance_lote_licitacao_pllotlic`">
+			<generator class="native" />
+		</id>
+		<property name="DsProdLanceLotePllotlic" type="String" column="`ds_prod_lance_lote_pllotlic`" length="500" />
+		<property name="DtAlteracaoPllotlic" type="DateTime" column="`dt_alteracao_pllotlic`" />
+		<property name="DtCadastroPllotlic" type="DateTime" column="`dt_cadastro_pllotlic`" />
+		<property name="VlProdLanceLotePllotlic" type="Decimal" column="`vl_prod_lance_lote_pllotlic`" />
+		<many-to-one name="LanceLoteLicitacao" class="LanceLoteLicitacao" column="`id_lance_lote_licitacao_llotlic`" not-null="true" fetch="select" />
+		<many-to-one name="ProdutoLoteLicitacao" class="ProdutoLoteLicitacao" column="`id_prod_lote_licitacao_prdlotlic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

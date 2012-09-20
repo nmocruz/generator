@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="FuncaoSistema" table="`Funcao_Sistema`" schema="`dbo`">
+		<id name="IdFuncaoSistemaFunsis" access="property" column="`id_funcao_sistema_funsis`">
+			<generator class="native" />
+		</id>
+		<property name="CdProjetoFunsis" type="Int32" column="`cd_projeto_funsis`" />
+		<property name="DsFuncaoSistemaFunsis" type="String" column="`ds_funcao_sistema_funsis`" length="50" />
+		<property name="DtAlteracaoFunsis" type="DateTime" column="`dt_alteracao_funsis`" />
+		<property name="DtCadastroFunsis" type="DateTime" column="`dt_cadastro_funsis`" />
+		<property name="DtDesativacaoFunsis" type="DateTime" column="`dt_desativacao_funsis`" />
+		<property name="NmPaginaFunsis" type="String" column="`nm_pagina_funsis`" length="200" />
+		<property name="NrOrdemFuncaoSistemaFunsis" type="Int32" column="`nr_ordem_funcao_sistema_funsis`" />
+		<many-to-one name="MenuSistema" class="MenuSistema" column="`id_menu_sistema_mensis`" not-null="false" fetch="select" />
+		<many-to-one name="ModuloSistema" class="ModuloSistema" column="`id_modulo_sistema_modsis`" not-null="true" fetch="select" />
+		<set name="PerfilAcessoFuncaos" inverse="true">
+			<key column="`id_funcao_sistema_funsis`" />
+			<one-to-many class="PerfilAcessoFuncao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

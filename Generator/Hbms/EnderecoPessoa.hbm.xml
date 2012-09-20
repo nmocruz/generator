@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="EnderecoPessoa" table="`Endereco_Pessoa`" schema="`dbo`">
+		<id name="IdEnderecoEndpes" access="property" column="`id_endereco_endpes`">
+			<generator class="native" />
+		</id>
+		<property name="DsComplementoEndpes" type="String" column="`ds_complemento_endpes`" length="50" />
+		<property name="DtAlteracaoEndpes" type="DateTime" column="`dt_alteracao_endpes`" />
+		<property name="DtCadastroEndpes" type="DateTime" column="`dt_cadastro_endpes`" />
+		<property name="DtDesativacaoEndpes" type="DateTime" column="`dt_desativacao_endpes`" />
+		<property name="NmBairroEndpes" type="String" column="`nm_bairro_endpes`" length="50" />
+		<property name="NmCidadeEndpes" type="String" column="`nm_cidade_endpes`" length="50" />
+		<property name="NmLogradouroEndpes" type="String" column="`nm_logradouro_endpes`" length="60" />
+		<property name="NrCepEndpes" type="String" column="`nr_cep_endpes`" length="8" />
+		<property name="TpLogradouroEndpes" type="String" column="`tp_logradouro_endpes`" length="10" />
+		<many-to-one name="Pessoa" class="Pessoa" column="`id_pessoa`" not-null="true" fetch="select" />
+		<set name="TelefoneEnderecoPessoas" inverse="true">
+			<key column="`id_endereco_endpes`" />
+			<one-to-many class="TelefoneEnderecoPessoa" />
+		</set>
+		<many-to-one name="UnidadeFederativa" class="UnidadeFederativa" column="`id_unidade_federativa_unifed`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

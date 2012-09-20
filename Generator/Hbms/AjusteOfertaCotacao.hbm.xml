@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="AjusteOfertaCotacao" table="`Ajuste_Oferta_Cotacao`" schema="`dbo`">
+		<id name="IdAjustePrecoCpagAjuofecot" access="property" column="`id_ajuste_preco_cpag_ajuofecot`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoAjuofecot" type="DateTime" column="`dt_alteracao_ajuofecot`" />
+		<property name="PcAjusteOfertaAjuofecot" type="Decimal" column="`pc_ajuste_oferta_ajuofecot`" />
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="true" fetch="select" />
+		<many-to-one name="FornecedorCotacao" class="FornecedorCotacao" column="`id_fornecedor_cotacao_forcot`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

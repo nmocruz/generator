@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Licitacao" table="`Licitacao`" schema="`dbo`">
+		<id name="IdLicitacaoLic" access="property" column="`id_licitacao_lic`">
+			<generator class="native" />
+		</id>
+		<property name="CdCentroCustoLic" type="String" column="`cd_centro_custo_lic`" length="20" />
+		<property name="CdEditalLic" type="String" column="`cd_edital_lic`" length="20" />
+		<property name="CdLicitacaoLic" type="String" column="`cd_licitacao_lic`" length="15" />
+		<property name="CdProcessoLic" type="String" column="`cd_processo_lic`" length="20" />
+		<property name="DsMinutaAtaLic" type="String" column="`ds_minuta_ata_lic`" length="1000" />
+		<property name="DsResumoLit" type="String" column="`ds_resumo_lit`" length="1000" />
+		<property name="DtAberturaPropostaLic" type="DateTime" column="`dt_abertura_proposta_lic`" />
+		<property name="DtAlteracaoLic" type="DateTime" column="`dt_alteracao_lic`" />
+		<property name="DtAlteracaoMinutaAtaLic" type="DateTime" column="`dt_alteracao_minuta_ata_lic`" />
+		<property name="DtCadastroLic" type="DateTime" column="`dt_cadastro_lic`" />
+		<property name="DtCadastroMinutaAtaLic" type="DateTime" column="`dt_cadastro_minuta_ata_lic`" />
+		<property name="DtCancelamentoLic" type="DateTime" column="`dt_cancelamento_lic`" />
+		<property name="DtInicioAcolhimentoPropostaLic" type="DateTime" column="`dt_inicio_acolhimento_proposta_lic`" />
+		<property name="DtPrevisaoDisputaLic" type="DateTime" column="`dt_previsao_disputa_lic`" />
+		<property name="DtPublicacaoLic" type="DateTime" column="`dt_publicacao_lic`" />
+		<property name="QtDiasPrazoQuestionamentoLic" type="Int32" column="`qt_dias_prazo_questionamento_lic`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<set name="DocumentoLicitacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="DocumentoLicitacao" />
+		</set>
+		<set name="EquipeLicitacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="EquipeLicitacao" />
+		</set>
+		<set name="FornecedorLicitacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="FornecedorLicitacao" />
+		</set>
+		<set name="HistoricoStatusLicitacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="HistoricoStatusLicitacao" />
+		</set>
+		<set name="LogTransacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="LogTransacao" />
+		</set>
+		<set name="LoteLicitacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="LoteLicitacao" />
+		</set>
+		<set name="MensagemLicitacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="MensagemLicitacao" />
+		</set>
+		<set name="QuestionamentoSolicitacaoLicitacaos" inverse="true">
+			<key column="`id_licitacao_lic`" />
+			<one-to-many class="QuestionamentoSolicitacaoLicitacao" />
+		</set>
+		<many-to-one name="TipoLicitacao" class="TipoLicitacao" column="`id_tipo_licitacao_tplic`" not-null="true" fetch="select" />
+		<many-to-one name="TipoModalidadeLicitacao" class="TipoModalidadeLicitacao" column="`id_tipo_modalidade_licitacao_tpmlic`" not-null="true" fetch="select" />
+		<many-to-one name="TipoMoeda" class="TipoMoeda" column="`id_tipo_moeda_tpmda`" not-null="true" fetch="select" />
+		<many-to-one name="TipoParticipacaoFornecedor" class="TipoParticipacaoFornecedor" column="`id_tipo_participacao_fornecedor_tppfor`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

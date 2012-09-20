@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="PerfilAcessoFuncao" table="`Perfil_Acesso_Funcao`" schema="`dbo`">
+		<id name="IdPerfilAcessoFuncaoPacfun" access="property" column="`id_perfil_acesso_funcao_pacfun`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoPacfun" type="DateTime" column="`dt_alteracao_pacfun`" />
+		<property name="DtCadastroPacfun" type="DateTime" column="`dt_cadastro_pacfun`" />
+		<property name="DtDesativacaoPacfun" type="DateTime" column="`dt_desativacao_pacfun`" />
+		<many-to-one name="FuncaoSistema" class="FuncaoSistema" column="`id_funcao_sistema_funsis`" not-null="true" fetch="select" />
+		<many-to-one name="PerfilAcesso" class="PerfilAcesso" column="`id_perfil_acesso_perace`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

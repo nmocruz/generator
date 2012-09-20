@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="DocumentoLicitacao" table="`Documento_Licitacao`" schema="`dbo`">
+		<id name="IdDocumentoLicitacaoDoclic" access="property" column="`id_documento_licitacao_doclic`">
+			<generator class="native" />
+		</id>
+		<property name="AqDocumentoLicitacaoDoclic" type="BinaryBlob" column="`aq_documento_licitacao_doclic`" />
+		<property name="DtAlteracaoDoclic" type="DateTime" column="`dt_alteracao_doclic`" />
+		<property name="DtCadastroDoclic" type="DateTime" column="`dt_cadastro_doclic`" />
+		<property name="DtDesativacaoDoclic" type="DateTime" column="`dt_desativacao_doclic`" />
+		<property name="DtFimValidadeDoclic" type="DateTime" column="`dt_fim_validade_doclic`" />
+		<property name="DtIniValidadeDoclic" type="DateTime" column="`dt_ini_validade_doclic`" />
+		<property name="NmDocumentoLicitacaoDoclic" type="String" column="`nm_documento_licitacao_doclic`" />
+		<many-to-one name="Licitacao" class="Licitacao" column="`id_licitacao_lic`" not-null="true" fetch="select" />
+		<many-to-one name="TipoDocumentoLicitacao" class="TipoDocumentoLicitacao" column="`id_tipo_doc_licitacao_tpdlic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

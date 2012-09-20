@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F534DBAB-832A-4BD5-A110-8F829D2723F9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Generator</RootNamespace>
+    <AssemblyName>Generator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.VisualStudio.TextTemplating.10.0\v4.0_10.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.TextTemplating.10.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0\v4.0_10.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Modeling.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.VSHost.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.VisualStudio.TextTemplating.VSHost.10.0\v4.0_10.0.0.0__b03f5f7f11d50a3a\Microsoft.VisualStudio.TextTemplating.VSHost.10.0.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AttributeModel.cs" />
+    <Compile Include="TypeDefinitions\ControllerDefinition.cs" />
+    <Compile Include="TypeDefinitions\LayerDefinition.cs" />
+    <Compile Include="EntityModel.cs" />
+    <Compile Include="TypeDefinitions\MetadataDefinition.cs" />
+    <Compile Include="PropertyModel.cs" />
+    <Compile Include="TypeDefinitions\RepositoryDefinition.cs" />
+    <Compile Include="TypeDefinitions\ServiceDefinition.cs" />
+    <Compile Include="Templating\TextTemplateHost.cs" />
+    <Compile Include="TypeDefinitions\TypeDefinition.cs" />
+    <Compile Include="TypeDefinitions\ViewDefinition.cs" />
+    <Compile Include="ViewModel.cs" />
+    <Compile Include="TypeDefinitions\ViewModelDefinition.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Templates\Controllers.tt" />
+    <None Include="Templates\DeleteView.tt" />
+    <None Include="Templates\IndexView.tt" />
+    <None Include="Templates\DetailView.tt" />
+    <None Include="Templates\ListView.tt" />
+    <None Include="Templates\EditView.tt" />
+    <None Include="Templates\Mapping.tt" />
+    <None Include="Templates\ViewModels.tt" />
+    <None Include="Templates\IServicos.tt" />
+    <None Include="Templates\Servicos.tt" />
+    <None Include="Templates\IRepositorios.tt" />
+    <None Include="Templates\Repositorios.tt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hbms\AjusteOfertaCotacao.hbm.xml" />
+    <Resource Include="Hbms\AnexoProduto.hbm.xml" />
+    <Resource Include="Hbms\ApresentacaoProduto.hbm.xml" />
+    <Resource Include="Hbms\AvaliacaoFornecedor.hbm.xml" />
+    <Resource Include="Hbms\AvaliacaoFornecedorComprador.hbm.xml" />
+    <Resource Include="Hbms\Cargo.hbm.xml" />
+    <Resource Include="Hbms\CentralCompra.hbm.xml" />
+    <Resource Include="Hbms\ClasseProduto.hbm.xml" />
+    <Resource Include="Hbms\ClassificacaoProdutoMarca.hbm.xml" />
+    <Resource Include="Hbms\Comprador.hbm.xml" />
+    <Resource Include="Hbms\ConceitoAvaliacao.hbm.xml" />
+    <Resource Include="Hbms\CondicaoPagamento.hbm.xml" />
+    <Resource Include="Hbms\Configuracao.hbm.xml" />
+    <Resource Include="Hbms\ContrapropostaLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\ContrarrazaoLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\ContratoComprador.hbm.xml" />
+    <Resource Include="Hbms\CorProduto.hbm.xml" />
+    <Resource Include="Hbms\Cotacao.hbm.xml" />
+    <Resource Include="Hbms\DeParaComprador.hbm.xml" />
+    <Resource Include="Hbms\DeParaCondicaoPagamento.hbm.xml" />
+    <Resource Include="Hbms\DeParaFornecedor.hbm.xml" />
+    <Resource Include="Hbms\DeParaMarca.hbm.xml" />
+    <Resource Include="Hbms\DeParaProduto.hbm.xml" />
+    <Resource Include="Hbms\DeParaProdutoMarca.hbm.xml" />
+    <Resource Include="Hbms\DeParaSetorComprador.hbm.xml" />
+    <Resource Include="Hbms\DeParaUnidadeProduto.hbm.xml" />
+    <Resource Include="Hbms\DesempateDisputaLote.hbm.xml" />
+    <Resource Include="Hbms\DocumentoComprador.hbm.xml" />
+    <Resource Include="Hbms\DocumentoFornecedor.hbm.xml" />
+    <Resource Include="Hbms\DocumentoLicitacao.hbm.xml" />
+    <Resource Include="Hbms\DocumentoProdutoFornecedor.hbm.xml" />
+    <Resource Include="Hbms\EmbalagemProduto.hbm.xml" />
+    <Resource Include="Hbms\EnderecoPessoa.hbm.xml" />
+    <Resource Include="Hbms\EquipeLicitacao.hbm.xml" />
+    <Resource Include="Hbms\EstruturaProduto.hbm.xml" />
+    <Resource Include="Hbms\FaturaOrdemCompra.hbm.xml" />
+    <Resource Include="Hbms\FaturaProdutoOrdemCompra.hbm.xml" />
+    <Resource Include="Hbms\FeriadoNacional.hbm.xml" />
+    <Resource Include="Hbms\Fornecedor.hbm.xml" />
+    <Resource Include="Hbms\FornecedorCotacao.hbm.xml" />
+    <Resource Include="Hbms\FornecedorLicitacao.hbm.xml" />
+    <Resource Include="Hbms\FornecedorProdMarcaCotacao.hbm.xml" />
+    <Resource Include="Hbms\FuncaoSistema.hbm.xml" />
+    <Resource Include="Hbms\GanhadorLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\HistoricoStatusCotacao.hbm.xml" />
+    <Resource Include="Hbms\HistoricoStatusGanhadorLote.hbm.xml" />
+    <Resource Include="Hbms\HistoricoStatusLicitacao.hbm.xml" />
+    <Resource Include="Hbms\HistoricoStatusLote.hbm.xml" />
+    <Resource Include="Hbms\HistoricoStatusOrdemCompra.hbm.xml" />
+    <Resource Include="Hbms\HistoricoValorCotacao.hbm.xml" />
+    <Resource Include="Hbms\ImagemProduto.hbm.xml" />
+    <Resource Include="Hbms\InterlocutorPessoaJuridica.hbm.xml" />
+    <Resource Include="Hbms\LanceLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\Licitacao.hbm.xml" />
+    <Resource Include="Hbms\LogErroIntegracao.hbm.xml" />
+    <Resource Include="Hbms\LogTransacao.hbm.xml" />
+    <Resource Include="Hbms\LoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\Marca.hbm.xml" />
+    <Resource Include="Hbms\MarcaFornecedor.hbm.xml" />
+    <Resource Include="Hbms\MensagemLicitacao.hbm.xml" />
+    <Resource Include="Hbms\MensagemPadrao.hbm.xml" />
+    <Resource Include="Hbms\MenuSistema.hbm.xml" />
+    <Resource Include="Hbms\ModuloSistema.hbm.xml" />
+    <Resource Include="Hbms\NivelAprovacaoPedido.hbm.xml" />
+    <Resource Include="Hbms\NivelEstrutura.hbm.xml" />
+    <Resource Include="Hbms\OrdemCompra.hbm.xml" />
+    <Resource Include="Hbms\OrdemCompraEntradaIntegra.hbm.xml" />
+    <Resource Include="Hbms\OrdemCompraSaidaIntegra.hbm.xml" />
+    <Resource Include="Hbms\PadraoSistemaIntegrado.hbm.xml" />
+    <Resource Include="Hbms\PedidoModelo.hbm.xml" />
+    <Resource Include="Hbms\PerfilAcesso.hbm.xml" />
+    <Resource Include="Hbms\PerfilAcessoFuncao.hbm.xml" />
+    <Resource Include="Hbms\Pessoa.hbm.xml" />
+    <Resource Include="Hbms\ProdMarcaContratoComprador.hbm.xml" />
+    <Resource Include="Hbms\Produto.hbm.xml" />
+    <Resource Include="Hbms\ProdutoComprador.hbm.xml" />
+    <Resource Include="Hbms\ProdutoCotacao.hbm.xml" />
+    <Resource Include="Hbms\ProdutoFornecedor.hbm.xml" />
+    <Resource Include="Hbms\ProdutoLanceLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\ProdutoLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\ProdutoMarca.hbm.xml" />
+    <Resource Include="Hbms\ProdutoMarcaComprador.hbm.xml" />
+    <Resource Include="Hbms\ProdutoOrdemCompra.hbm.xml" />
+    <Resource Include="Hbms\ProdutoOrdemCompraEntradaInt.hbm.xml" />
+    <Resource Include="Hbms\ProdutoOrdemCompraSaidaInt.hbm.xml" />
+    <Resource Include="Hbms\ProdutoPedidoModelo.hbm.xml" />
+    <Resource Include="Hbms\ProdutoRequisicaoEntradaInt.hbm.xml" />
+    <Resource Include="Hbms\ProgrEntregaProdutoCotacao.hbm.xml" />
+    <Resource Include="Hbms\ProgrEntrFornPmarcaCotacao.hbm.xml" />
+    <Resource Include="Hbms\PropostaLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\QuestionamentoSolicitacaoLicitacao.hbm.xml" />
+    <Resource Include="Hbms\RamoAtividade.hbm.xml" />
+    <Resource Include="Hbms\RamoAtividadeProduto.hbm.xml" />
+    <Resource Include="Hbms\RecursoLoteLicitacao.hbm.xml" />
+    <Resource Include="Hbms\RegiaoGeografica.hbm.xml" />
+    <Resource Include="Hbms\RegraMarcaSaidaIntegra.hbm.xml" />
+    <Resource Include="Hbms\RequisicaoEntradaIntegra.hbm.xml" />
+    <Resource Include="Hbms\SegmentoFornecedor.hbm.xml" />
+    <Resource Include="Hbms\SelecaoOfertaCotacao.hbm.xml" />
+    <Resource Include="Hbms\SetorComprador.hbm.xml" />
+    <Resource Include="Hbms\SetorUsuarioSistema.hbm.xml" />
+    <Resource Include="Hbms\SistemaIntegrado.hbm.xml" />
+    <Resource Include="Hbms\StatusCotacao.hbm.xml" />
+    <Resource Include="Hbms\StatusGanhadorLote.hbm.xml" />
+    <Resource Include="Hbms\StatusLicitacao.hbm.xml" />
+    <Resource Include="Hbms\StatusLote.hbm.xml" />
+    <Resource Include="Hbms\StatusOrdemCompra.hbm.xml" />
+    <Resource Include="Hbms\SubMarca.hbm.xml" />
+    <Resource Include="Hbms\TelefoneEnderecoPessoa.hbm.xml" />
+    <Resource Include="Hbms\TipoAnexo.hbm.xml" />
+    <Resource Include="Hbms\TipoClassificacaoProduto.hbm.xml" />
+    <Resource Include="Hbms\TipoCotacao.hbm.xml" />
+    <Resource Include="Hbms\TipoDisputaLote.hbm.xml" />
+    <Resource Include="Hbms\TipoDocumento.hbm.xml" />
+    <Resource Include="Hbms\TipoDocumentoLicitacao.hbm.xml" />
+    <Resource Include="Hbms\TipoDocumentoObrigatorio.hbm.xml" />
+    <Resource Include="Hbms\TipoFornecedor.hbm.xml" />
+    <Resource Include="Hbms\TipoLicitacao.hbm.xml" />
+    <Resource Include="Hbms\TipoModalidadeLicitacao.hbm.xml" />
+    <Resource Include="Hbms\TipoMoeda.hbm.xml" />
+    <Resource Include="Hbms\TipoParticipacaoFornecedor.hbm.xml" />
+    <Resource Include="Hbms\TipoPorteEmpresa.hbm.xml" />
+    <Resource Include="Hbms\TipoTransacao.hbm.xml" />
+    <Resource Include="Hbms\UnidadeFederativa.hbm.xml" />
+    <Resource Include="Hbms\UnidadeFederativaUsuarioSistema.hbm.xml" />
+    <Resource Include="Hbms\UnidadeProduto.hbm.xml" />
+    <Resource Include="Hbms\UsuarioSistema.hbm.xml" />
+    <Resource Include="Hbms\VoltagemProduto.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Output\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hbms\CompradorAcompUsuarioSis.hbm.xml" />
+    <Resource Include="Hbms\FornecedorAcompUsuarioSis.hbm.xml" />
+    <Resource Include="Hbms\HistoricoStatusProposta.hbm.xml" />
+    <Resource Include="Hbms\Pais.hbm.xml" />
+    <Resource Include="Hbms\StatusProposta.hbm.xml" />
+    <Resource Include="Hbms\TipoCriterioSelecaoProposta.hbm.xml" />
+    <Resource Include="Hbms\ViewOrdemCompraAprovada.hbm.xml" />
+    <Content Include="JetPackWPFTheme.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

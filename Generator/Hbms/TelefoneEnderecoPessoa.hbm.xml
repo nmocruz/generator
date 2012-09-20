@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TelefoneEnderecoPessoa" table="`Telefone_Endereco_Pessoa`" schema="`dbo`">
+		<id name="IdTelefoneTelendpes" access="property" column="`id_telefone_telendpes`">
+			<generator class="native" />
+		</id>
+		<property name="DsObservacaoTelendpes" type="String" column="`ds_observacao_telendpes`" length="100" />
+		<property name="DtAlteracaoTelendpes" type="DateTime" column="`dt_alteracao_telendpes`" />
+		<property name="DtCadastroTelendpes" type="DateTime" column="`dt_cadastro_telendpes`" />
+		<property name="DtDesativacaoTelendpes" type="DateTime" column="`dt_desativacao_telendpes`" />
+		<property name="NrRamalTelendpes" type="String" column="`nr_ramal_telendpes`" length="5" />
+		<property name="NrTelefoneTelendpes" type="String" column="`nr_telefone_telendpes`" length="18" />
+		<property name="TpTelefoneTelendpes" type="Int32" column="`tp_telefone_telendpes`" />
+		<many-to-one name="EnderecoPessoa" class="EnderecoPessoa" column="`id_endereco_endpes`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

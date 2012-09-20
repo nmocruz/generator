@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="LoteLicitacao" table="`Lote_Licitacao`" schema="`dbo`">
+		<id name="IdLoteLicitacaoLotlic" access="property" column="`id_lote_licitacao_lotlic`">
+			<generator class="native" />
+		</id>
+		<property name="CdLoteLicitacaoLotlic" type="Int32" column="`cd_lote_licitacao_lotlic`" />
+		<property name="DsLoteLicitacaoLotlit" type="String" column="`ds_lote_licitacao_lotlit`" length="1000" />
+		<property name="DtAlteracaoLotlic" type="DateTime" column="`dt_alteracao_lotlic`" />
+		<property name="DtCadastroLotlic" type="DateTime" column="`dt_cadastro_lotlic`" />
+		<property name="DtCancelamentoLotlic" type="DateTime" column="`dt_cancelamento_lotlic`" />
+		<property name="DtFimExtraDisputaLoteLotlic" type="DateTime" column="`dt_fim_extra_disputa_lote_lotlic`" />
+		<property name="DtFimNormalDisputaLoteLotlic" type="DateTime" column="`dt_fim_normal_disputa_lote_lotlic`" />
+		<property name="DtFinalizacaoDisputaLoteLotlic" type="DateTime" column="`dt_finalizacao_disputa_lote_lotlic`" />
+		<property name="DtInicioDisputaLoteLotlic" type="DateTime" column="`dt_inicio_disputa_lote_lotlic`" />
+		<property name="DtMelhorLanceLoteLotlic" type="DateTime" column="`dt_melhor_lance_lote_lotlic`" />
+		<property name="DtVencedorLoteLotlic" type="DateTime" column="`dt_vencedor_lote_lotlic`" />
+		<property name="SnExclusividadePartTpEmprLotlic" type="Boolean" column="`sn_exclusividade_part_tp_empr_lotlic`" />
+		<property name="SnTratamentoDiferTpEmprLotlic" type="Boolean" column="`sn_tratamento_difer_tp_empr_lotlic`" />
+		<property name="VlContratadoLoteLotlic" type="Decimal" column="`vl_contratado_lote_lotlic`" />
+		<property name="VlMelhorLanceLoteLotlic" type="Decimal" column="`vl_melhor_lance_lote_lotlic`" />
+		<property name="VlMelhorPropostaLoteLotlic" type="Decimal" column="`vl_melhor_proposta_lote_lotlic`" />
+		<set name="DesempateDisputaLotes" inverse="true">
+			<key column="`id_lote_licitacao_lotlic`" />
+			<one-to-many class="DesempateDisputaLote" />
+		</set>
+		<set name="GanhadorLoteLicitacaos" inverse="true">
+			<key column="`id_lote_licitacao_lotlic`" />
+			<one-to-many class="GanhadorLoteLicitacao" />
+		</set>
+		<set name="HistoricoStatusLotes" inverse="true">
+			<key column="`id_lote_licitacao_lotlic`" />
+			<one-to-many class="HistoricoStatusLote" />
+		</set>
+		<set name="LanceLoteLicitacaos" inverse="true">
+			<key column="`id_lote_licitacao_lotlic`" />
+			<one-to-many class="LanceLoteLicitacao" />
+		</set>
+		<many-to-one name="Licitacao" class="Licitacao" column="`id_licitacao_lic`" not-null="true" fetch="select" />
+		<set name="MensagemLicitacaos" inverse="true">
+			<key column="`id_lote_licitacao_lotlic`" />
+			<one-to-many class="MensagemLicitacao" />
+		</set>
+		<set name="ProdutoLoteLicitacaos" inverse="true">
+			<key column="`id_lote_licitacao_lotlic`" />
+			<one-to-many class="ProdutoLoteLicitacao" />
+		</set>
+		<set name="PropostaLoteLicitacaos" inverse="true">
+			<key column="`id_lote_licitacao_lotlic`" />
+			<one-to-many class="PropostaLoteLicitacao" />
+		</set>
+		<many-to-one name="TipoCriterioSelecaoPropostum" class="TipoCriterioSelecaoPropostum" column="`id_criterio_selec_proposta_tpcspro`" not-null="true" fetch="select" />
+		<many-to-one name="TipoDisputaLote" class="TipoDisputaLote" column="`id_tipo_disputa_lote_tpdlot`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

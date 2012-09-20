@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="RamoAtividade" table="`Ramo_Atividade`" schema="`dbo`">
+		<id name="IdRamoAtividadeRamatv" access="property" column="`id_ramo_atividade_ramatv`">
+			<generator class="native" />
+		</id>
+		<property name="DsRamoAtividadeRamatv" type="String" column="`ds_ramo_atividade_ramatv`" length="50" />
+		<property name="DtAlteracaoRamatv" type="DateTime" column="`dt_alteracao_ramatv`" />
+		<property name="DtCadastroRamatv" type="DateTime" column="`dt_cadastro_ramatv`" />
+		<property name="DtDesativacaoRamatv" type="DateTime" column="`dt_desativacao_ramatv`" />
+		<set name="Compradors" inverse="true">
+			<key column="`id_ramo_atividade_ramatv`" />
+			<one-to-many class="Comprador" />
+		</set>
+		<set name="RamoAtividadeProdutos" inverse="true">
+			<key column="`id_ramo_atividade_ramatv`" />
+			<one-to-many class="RamoAtividadeProduto" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

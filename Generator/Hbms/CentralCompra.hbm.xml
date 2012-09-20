@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="CentralCompra" table="`Central_Compra`" schema="`dbo`">
+		<id name="IdCentralCompraCtrcom" access="property" column="`id_central_compra_ctrcom`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoCtrcom" type="DateTime" column="`dt_alteracao_ctrcom`" />
+		<property name="DtCadastroCtrcom" type="DateTime" column="`dt_cadastro_ctrcom`" />
+		<many-to-one name="Pessoa" class="Pessoa" column="`id_pessoa`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+		<set name="UsuarioSistemas" inverse="true">
+			<key column="`id_central_compra_ctrcom`" />
+			<one-to-many class="UsuarioSistema" />
+		</set>
+	</class>
+</hibernate-mapping>

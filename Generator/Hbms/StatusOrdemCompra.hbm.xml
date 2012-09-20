@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="StatusOrdemCompra" table="`Status_Ordem_Compra`" schema="`dbo`">
+		<id name="IdStatusOrdemComprStocom" access="property" column="`id_status_ordem_compr_stocom`">
+			<generator class="native" />
+		</id>
+		<property name="DsStatusOrdemComprStocom" type="String" column="`ds_status_ordem_compr_stocom`" length="30" />
+		<property name="DtAlteracaoStocom" type="DateTime" column="`dt_alteracao_stocom`" />
+		<property name="DtCadastroStocom" type="DateTime" column="`dt_cadastro_stocom`" />
+		<property name="DtDesativacaoStocom" type="DateTime" column="`dt_desativacao_stocom`" />
+		<property name="TpAtualizacaoStatusStocom" type="String" column="`tp_atualizacao_status_stocom`" length="1" />
+		<set name="HistoricoStatusOrdemCompras" inverse="true">
+			<key column="`id_status_ordem_compr_stocom`" />
+			<one-to-many class="HistoricoStatusOrdemCompra" />
+		</set>
+		<set name="OrdemCompraSaidaIntegras" inverse="true">
+			<key column="`id_status_ordem_compr_stocom`" />
+			<one-to-many class="OrdemCompraSaidaIntegra" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

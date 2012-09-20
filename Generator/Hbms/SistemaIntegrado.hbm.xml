@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="SistemaIntegrado" table="`Sistema_Integrado`" schema="`dbo`">
+		<id name="IdSistemaIntegradoSisint" access="property" column="`id_sistema_integrado_sisint`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoSisint" type="DateTime" column="`dt_alteracao_sisint`" />
+		<property name="DtCadastroSisint" type="DateTime" column="`dt_cadastro_sisint`" />
+		<property name="DtDesativacaoSisint" type="DateTime" column="`dt_desativacao_sisint`" />
+		<property name="NmSistemaIntegradoSisint" type="String" column="`nm_sistema_integrado_sisint`" length="50" />
+		<property name="SgSistemaIntegradoSisint" type="String" column="`sg_sistema_integrado_sisint`" length="10" />
+		<set name="PadraoSistemaIntegrados" inverse="true">
+			<key column="`id_sistema_integrado_sisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

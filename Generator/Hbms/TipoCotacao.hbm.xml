@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TipoCotacao" table="`Tipo_Cotacao`" schema="`dbo`">
+		<id name="IdTipoCotacaoTpcot" access="property" column="`id_tipo_cotacao_tpcot`">
+			<generator class="native" />
+		</id>
+		<property name="DsAbrevTipoCotacaoTpcot" type="String" column="`ds_abrev_tipo_cotacao_tpcot`" length="5" />
+		<property name="DsTipoCotacaoTpcot" type="String" column="`ds_tipo_cotacao_tpcot`" length="30" />
+		<property name="DtAlteracaoTpcot" type="DateTime" column="`dt_alteracao_tpcot`" />
+		<property name="DtCadastroTpcot" type="DateTime" column="`dt_cadastro_tpcot`" />
+		<property name="DtDesativacaoTpcot" type="DateTime" column="`dt_desativacao_tpcot`" />
+		<set name="Cotacaos" inverse="true">
+			<key column="`id_tipo_cotacao_tpcot`" />
+			<one-to-many class="Cotacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

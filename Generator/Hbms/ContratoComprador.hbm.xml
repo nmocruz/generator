@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ContratoComprador" table="`Contrato_Comprador`" schema="`dbo`">
+		<id name="IdContratoCompradorConcom" access="property" column="`id_contrato_comprador_concom`">
+			<generator class="native" />
+		</id>
+		<property name="CdContratoConcom" type="String" column="`cd_contrato_concom`" length="30" />
+		<property name="DtAlteracaoConcom" type="DateTime" column="`dt_alteracao_concom`" />
+		<property name="DtBloqueioConcom" type="DateTime" column="`dt_bloqueio_concom`" />
+		<property name="DtCadastroConcom" type="DateTime" column="`dt_cadastro_concom`" />
+		<property name="DtFimValidadeConcom" type="DateTime" column="`dt_fim_validade_concom`" />
+		<property name="DtIniValidadeConcom" type="DateTime" column="`dt_ini_validade_concom`" />
+		<property name="QtDiasPrzAvisoVencConcom" type="Int32" column="`qt_dias_prz_aviso_venc_concom`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="true" fetch="select" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<set name="ProdMarcaContratoCompradors" inverse="true">
+			<key column="`id_contrato_comprador_concom`" />
+			<one-to-many class="ProdMarcaContratoComprador" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

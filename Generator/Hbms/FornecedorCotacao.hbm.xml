@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="FornecedorCotacao" table="`Fornecedor_Cotacao`" schema="`dbo`">
+		<id name="IdFornecedorCotacaoForcot" access="property" column="`id_fornecedor_cotacao_forcot`">
+			<generator class="native" />
+		</id>
+		<property name="DsObservacaoForcot" type="String" column="`ds_observacao_forcot`" length="500" />
+		<property name="DtAlteracaoForcot" type="DateTime" column="`dt_alteracao_forcot`" />
+		<property name="DtAprovacaoForcot" type="DateTime" column="`dt_aprovacao_forcot`" />
+		<property name="DtDesativacaoForcot" type="DateTime" column="`dt_desativacao_forcot`" />
+		<property name="DtRejeicaoForcot" type="DateTime" column="`dt_rejeicao_forcot`" />
+		<property name="DtVisualizacaoForcot" type="DateTime" column="`dt_visualizacao_forcot`" />
+		<property name="QtDiasPrazoEntrForcot" type="Int16" column="`qt_dias_prazo_entr_forcot`" />
+		<property name="QtIntervMinEntregaForcot" type="Int16" column="`qt_interv_min_entrega_forcot`" />
+		<property name="SnDivulgGanhadCotacaoForcot" type="Boolean" column="`sn_divulg_ganhad_cotacao_forcot`" />
+		<property name="SnIntencaoOfertarForcot" type="Boolean" column="`sn_intencao_ofertar_forcot`" />
+		<property name="TpFreteCotacaoForcot" type="String" column="`tp_frete_cotacao_forcot`" length="1" />
+		<property name="VlMinimoPedidoCompForcot" type="Decimal" column="`vl_minimo_pedido_comp_forcot`" />
+		<set name="AjusteOfertaCotacaos" inverse="true">
+			<key column="`id_fornecedor_cotacao_forcot`" />
+			<one-to-many class="AjusteOfertaCotacao" />
+		</set>
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="false" fetch="select" />
+		<many-to-one name="Cotacao" class="Cotacao" column="`id_cotacao_cot`" not-null="true" fetch="select" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<set name="FornecedorProdMarcaCotacaos" inverse="true">
+			<key column="`id_fornecedor_cotacao_forcot`" />
+			<one-to-many class="FornecedorProdMarcaCotacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_resp_forcot`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TipoCriterioSelecaoPropostum" table="`Tipo_Criterio_Selecao_Proposta`" schema="`dbo`">
+		<id name="IdCriterioSelecPropostaTpcspro" access="property" column="`id_criterio_selec_proposta_tpcspro`">
+			<generator class="native" />
+		</id>
+		<property name="DsCriterioSelecPropostaTpcspro" type="String" column="`ds_criterio_selec_proposta_tpcspro`" length="50" />
+		<property name="DtAlteracaoTpcspro" type="DateTime" column="`dt_alteracao_tpcspro`" />
+		<property name="DtCadastroTpcspro" type="DateTime" column="`dt_cadastro_tpcspro`" />
+		<property name="DtDesativacaoTpcspro" type="DateTime" column="`dt_desativacao_tpcspro`" />
+		<set name="LoteLicitacaos" inverse="true">
+			<key column="`id_criterio_selec_proposta_tpcspro`" />
+			<one-to-many class="LoteLicitacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

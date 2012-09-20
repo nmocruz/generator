@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="DocumentoComprador" table="`Documento_Comprador`" schema="`dbo`">
+		<id name="IdDocumentoCompradorDoccom" access="property" column="`id_documento_comprador_doccom`">
+			<generator class="native" />
+		</id>
+		<property name="AqImagemDocumentoDoccom" type="BinaryBlob" column="`aq_imagem_documento_doccom`" />
+		<property name="DtAlteracaoDoccom" type="DateTime" column="`dt_alteracao_doccom`" />
+		<property name="DtCadastroDoccom" type="DateTime" column="`dt_cadastro_doccom`" />
+		<property name="DtDesativacaoDoccom" type="DateTime" column="`dt_desativacao_doccom`" />
+		<property name="DtFimValidadeDoccom" type="DateTime" column="`dt_fim_validade_doccom`" />
+		<property name="DtIniValidadeDoccom" type="DateTime" column="`dt_ini_validade_doccom`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="TipoDocumento" class="TipoDocumento" column="`id_tipo_documento_tpdoc`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

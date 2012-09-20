@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="PerfilAcesso" table="`Perfil_Acesso`" schema="`dbo`">
+		<id name="IdPerfilAcessoPerace" access="property" column="`id_perfil_acesso_perace`">
+			<generator class="native" />
+		</id>
+		<property name="DsPerfilAcessoPerace" type="String" column="`ds_perfil_acesso_perace`" length="50" />
+		<property name="DtAlteracaoPerace" type="DateTime" column="`dt_alteracao_perace`" />
+		<property name="DtCadastroPerace" type="DateTime" column="`dt_cadastro_perace`" />
+		<property name="DtDesativacaoPerace" type="DateTime" column="`dt_desativacao_perace`" />
+		<property name="SnAcompPedComprPerace" type="Boolean" column="`sn_acomp_ped_compr_perace`" />
+		<property name="SnAprovPedComprPerace" type="Boolean" column="`sn_aprov_ped_compr_perace`" />
+		<property name="SnCentralCompraPerace" type="Boolean" column="`sn_central_compra_perace`" />
+		<property name="SnCompradorPerace" type="Boolean" column="`sn_comprador_perace`" />
+		<property name="SnFornecedorPerace" type="Boolean" column="`sn_fornecedor_perace`" />
+		<set name="EquipeLicitacaos" inverse="true">
+			<key column="`id_perfil_acesso_perace`" />
+			<one-to-many class="EquipeLicitacao" />
+		</set>
+		<set name="PerfilAcessoFuncaos" inverse="true">
+			<key column="`id_perfil_acesso_perace`" />
+			<one-to-many class="PerfilAcessoFuncao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+		<set name="UsuarioSistemas" inverse="true">
+			<key column="`id_perfil_acesso_perace`" />
+			<one-to-many class="UsuarioSistema" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="AnexoProduto" table="`Anexo_Produto`" schema="`dbo`">
+		<id name="IdAnexoProdutoAnxprd" access="property" column="`id_anexo_produto_anxprd`">
+			<generator class="native" />
+		</id>
+		<property name="AqAnexoProdutoAnxprd" type="BinaryBlob" column="`aq_anexo_produto_anxprd`" />
+		<property name="DsAnexoProdutoAnxprd" type="String" column="`ds_anexo_produto_anxprd`" length="100" />
+		<property name="DtAlteracaoAnxprd" type="DateTime" column="`dt_alteracao_anxprd`" />
+		<property name="DtCadastroAnxprd" type="DateTime" column="`dt_cadastro_anxprd`" />
+		<property name="DtFimValidadeAnxprd" type="DateTime" column="`dt_fim_validade_anxprd`" />
+		<property name="DtIniValidadeAnxprd" type="DateTime" column="`dt_ini_validade_anxprd`" />
+		<property name="NmAnexoProdutoAnxprd" type="String" column="`nm_anexo_produto_anxprd`" length="100" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="true" fetch="select" />
+		<many-to-one name="TipoAnexo" class="TipoAnexo" column="`id_tipo_anexo_tpanx`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

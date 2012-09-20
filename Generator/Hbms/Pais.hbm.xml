@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Pai" table="`Pais`" schema="`dbo`">
+		<id name="IdPais" access="property" column="`id_pais`">
+			<generator class="native" />
+		</id>
+		<property name="CdPais" type="String" column="`cd_pais`" length="5" />
+		<property name="DtAlteracaoPais" type="DateTime" column="`dt_alteracao_pais`" />
+		<property name="DtCadastroPais" type="DateTime" column="`dt_cadastro_pais`" />
+		<property name="DtDesativacaoPais" type="DateTime" column="`dt_desativacao_pais`" />
+		<property name="NmPais" type="String" column="`nm_pais`" length="50" />
+		<property name="SgPais" type="String" column="`sg_pais`" length="3" />
+		<set name="TipoMoedas" inverse="true">
+			<key column="`id_pais`" />
+			<one-to-many class="TipoMoeda" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="StatusCotacao" table="`Status_Cotacao`" schema="`dbo`">
+		<id name="IdStatusCotacaoStcot" access="property" column="`id_status_cotacao_stcot`">
+			<generator class="native" />
+		</id>
+		<property name="DsStatusCotacaoStcot" type="String" column="`ds_status_cotacao_stcot`" length="40" />
+		<property name="DtAlteracaoStcot" type="DateTime" column="`dt_alteracao_stcot`" />
+		<property name="DtCadastroStcot" type="DateTime" column="`dt_cadastro_stcot`" />
+		<property name="DtDesativacaoStcot" type="DateTime" column="`dt_desativacao_stcot`" />
+		<set name="HistoricoStatusCotacaos" inverse="true">
+			<key column="`id_status_cotacao_stcot`" />
+			<one-to-many class="HistoricoStatusCotacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

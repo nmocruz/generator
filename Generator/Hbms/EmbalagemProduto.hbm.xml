@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="EmbalagemProduto" table="`Embalagem_Produto`" schema="`dbo`">
+		<id name="IdEmbalagemProdutoEmbprd" access="property" column="`id_embalagem_produto_embprd`">
+			<generator class="native" />
+		</id>
+		<property name="DsAbrevEmbalagemProdEmbprd" type="String" column="`ds_abrev_embalagem_prod_embprd`" length="5" />
+		<property name="DsEmbalagemProdutoEmbprd" type="String" column="`ds_embalagem_produto_embprd`" length="50" />
+		<property name="DtAlteracaoEmbprd" type="DateTime" column="`dt_alteracao_embprd`" />
+		<property name="DtCadastroEmbprd" type="DateTime" column="`dt_cadastro_embprd`" />
+		<property name="DtDesativacaoEmbprd" type="DateTime" column="`dt_desativacao_embprd`" />
+		<set name="ProdutoMarcas" inverse="true">
+			<key column="`id_embalagem_produto_embprd`" />
+			<one-to-many class="ProdutoMarca" />
+		</set>
+		<set name="ProdutoMarcas1" inverse="true">
+			<key column="`id_subembalagem_produto_embprd`" />
+			<one-to-many class="ProdutoMarca" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

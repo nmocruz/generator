@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="CondicaoPagamento" table="`Condicao_Pagamento`" schema="`dbo`">
+		<id name="IdCondicaoPagamentoConpag" access="property" column="`id_condicao_pagamento_conpag`">
+			<generator class="native" />
+		</id>
+		<property name="DsCondicaoPagamentoConpag" type="String" column="`ds_condicao_pagamento_conpag`" length="50" />
+		<property name="DtAlteracaoConpag" type="DateTime" column="`dt_alteracao_conpag`" />
+		<property name="DtCadastroConpag" type="DateTime" column="`dt_cadastro_conpag`" />
+		<property name="DtDesativacaoConpag" type="DateTime" column="`dt_desativacao_conpag`" />
+		<property name="NrMedioDiasConpag" type="Int32" column="`nr_medio_dias_conpag`" />
+		<set name="AjusteOfertaCotacaos" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="AjusteOfertaCotacao" />
+		</set>
+		<set name="ContratoCompradors" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="ContratoComprador" />
+		</set>
+		<set name="Cotacaos" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="Cotacao" />
+		</set>
+		<set name="DeParaCondicaoPagamentos" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="DeParaCondicaoPagamento" />
+		</set>
+		<set name="FornecedorCotacaos" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="FornecedorCotacao" />
+		</set>
+		<set name="OrdemCompras" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="OrdemCompra" />
+		</set>
+		<set name="OrdemCompraSaidaIntegras" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="OrdemCompraSaidaIntegra" />
+		</set>
+		<set name="PedidoModelos" inverse="true">
+			<key column="`id_condicao_pagamento_conpag`" />
+			<one-to-many class="PedidoModelo" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

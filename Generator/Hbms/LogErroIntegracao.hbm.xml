@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="LogErroIntegracao" table="`Log_Erro_Integracao`" schema="`dbo`">
+		<id name="IdLogErroIntegracaoLogeint" access="property" column="`id_log_erro_integracao_logeint`">
+			<generator class="native" />
+		</id>
+		<property name="CdMarcaLogeint" type="String" column="`cd_marca_logeint`" length="20" />
+		<property name="CdProdutoLogeint" type="String" column="`cd_produto_logeint`" length="20" />
+		<property name="CdProdutoMarcaLogeint" type="String" column="`cd_produto_marca_logeint`" length="20" />
+		<property name="DsOcorrenciaLogeint" type="String" column="`ds_ocorrencia_logeint`" length="500" />
+		<property name="DsProdutoLogeint" type="String" column="`ds_produto_logeint`" length="500" />
+		<property name="DsUnidProdutoLogeint" type="String" column="`ds_unid_produto_logeint`" length="50" />
+		<property name="DtHrOcorrenciaLogeint" type="DateTime" column="`dt_hr_ocorrencia_logeint`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="false" fetch="select" />
+	</class>
+</hibernate-mapping>

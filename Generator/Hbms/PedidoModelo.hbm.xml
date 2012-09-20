@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="PedidoModelo" table="`Pedido_Modelo`" schema="`dbo`">
+		<id name="IdPedidoModeloPedmod" access="property" column="`id_pedido_modelo_pedmod`">
+			<generator class="native" />
+		</id>
+		<property name="DsPedidoModeloPedmod" type="String" column="`ds_pedido_modelo_pedmod`" length="50" />
+		<property name="DtAlteracaoPedmod" type="DateTime" column="`dt_alteracao_pedmod`" />
+		<property name="DtCadastroPedmod" type="DateTime" column="`dt_cadastro_pedmod`" />
+		<property name="DtDesativacaoPedmod" type="DateTime" column="`dt_desativacao_pedmod`" />
+		<property name="SnCondPagtoObrigatoriaPedmod" type="Boolean" column="`sn_cond_pagto_obrigatoria_pedmod`" />
+		<property name="SnTipoFreteObrigatorioPedmod" type="Boolean" column="`sn_tipo_frete_obrigatorio_pedmod`" />
+		<property name="TpFretePedmod" type="String" column="`tp_frete_pedmod`" length="1" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="false" fetch="select" />
+		<set name="ProdutoPedidoModelos" inverse="true">
+			<key column="`id_pedido_modelo_pedmod`" />
+			<one-to-many class="ProdutoPedidoModelo" />
+		</set>
+		<many-to-one name="SetorComprador" class="SetorComprador" column="`id_setor_comprador_setcom`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

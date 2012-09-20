@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="QuestionamentoSolicitacaoLicitacao" table="`Questionamento_Solicitacao_Licitacao`" schema="`dbo`">
+		<id name="IdQuestSolicLicitacaoQslic" access="property" column="`id_quest_solic_licitacao_qslic`">
+			<generator class="native" />
+		</id>
+		<property name="DsQuestSolicLicitacaoQslic" type="String" column="`ds_quest_solic_licitacao_qslic`" length="250" />
+		<property name="DsRespostaQslic" type="String" column="`ds_resposta_qslic`" length="250" />
+		<property name="DtAlteracaoQslic" type="DateTime" column="`dt_alteracao_qslic`" />
+		<property name="DtCadastroQslic" type="DateTime" column="`dt_cadastro_qslic`" />
+		<property name="DtCancelamentoQslic" type="DateTime" column="`dt_cancelamento_qslic`" />
+		<property name="DtRespostaQslic" type="DateTime" column="`dt_resposta_qslic`" />
+		<property name="SnRespostaFornecedorQslic" type="Boolean" column="`sn_resposta_fornecedor_qslic`" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<many-to-one name="Licitacao" class="Licitacao" column="`id_licitacao_lic`" not-null="true" fetch="select" />
+		<many-to-one name="StatusLicitacao" class="StatusLicitacao" column="`id_status_licitacao_stlic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_quest_solic_licitacao_qslic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`id_user_resposta_qslic`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema2" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

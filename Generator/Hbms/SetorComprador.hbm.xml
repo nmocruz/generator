@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="SetorComprador" table="`Setor_Comprador`" schema="`dbo`">
+		<id name="IdSetorCompradorSetcom" access="property" column="`id_setor_comprador_setcom`">
+			<generator class="native" />
+		</id>
+		<property name="DsSetorCompradorSetcom" type="String" column="`ds_setor_comprador_setcom`" length="30" />
+		<property name="DtAlteracaoSetcom" type="DateTime" column="`dt_alteracao_setcom`" />
+		<property name="DtCadastroSetcom" type="DateTime" column="`dt_cadastro_setcom`" />
+		<property name="DtDesativacaoSetcom" type="DateTime" column="`dt_desativacao_setcom`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<set name="Cotacaos" inverse="true">
+			<key column="`id_setor_comprador_setcom`" />
+			<one-to-many class="Cotacao" />
+		</set>
+		<set name="DeParaSetorCompradors" inverse="true">
+			<key column="`id_setor_comprador_setcom`" />
+			<one-to-many class="DeParaSetorComprador" />
+		</set>
+		<set name="NivelAprovacaoPedidos" inverse="true">
+			<key column="`id_setor_comprador_setcom`" />
+			<one-to-many class="NivelAprovacaoPedido" />
+		</set>
+		<set name="PedidoModelos" inverse="true">
+			<key column="`id_setor_comprador_setcom`" />
+			<one-to-many class="PedidoModelo" />
+		</set>
+		<set name="RequisicaoEntradaIntegras" inverse="true">
+			<key column="`id_setor_comprador_setcom`" />
+			<one-to-many class="RequisicaoEntradaIntegra" />
+		</set>
+		<set name="SetorUsuarioSistemas" inverse="true">
+			<key column="`id_setor_comprador_setcom`" />
+			<one-to-many class="SetorUsuarioSistema" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

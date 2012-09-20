@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="OrdemCompraEntradaIntegra" table="`Ordem_Compra_Entrada_Integra`" schema="`dbo`">
+		<id name="IdOrdemCompraOrdcomei" access="property" column="`id_ordem_compra_ordcomei`">
+			<generator class="native" />
+		</id>
+		<property name="CdCompradorOrdcomei" type="String" column="`cd_comprador_ordcomei`" length="20" />
+		<property name="CdCondicaoPagamentoOrdcomei" type="String" column="`cd_condicao_pagamento_ordcomei`" length="50" />
+		<property name="CdCotacaoOrdcomei" type="String" column="`cd_cotacao_ordcomei`" length="15" />
+		<property name="CdFornecedorOrdcomei" type="String" column="`cd_fornecedor_ordcomei`" length="20" />
+		<property name="CdOrdemCompraOrdcomei" type="String" column="`cd_ordem_compra_ordcomei`" length="20" />
+		<property name="CdRequisicaoOrdcomei" type="String" column="`cd_requisicao_ordcomei`" length="20" />
+		<property name="CdSetorOrdcomei" type="String" column="`cd_setor_ordcomei`" length="50" />
+		<property name="DsComplementoOrdcomei" type="String" column="`ds_complemento_ordcomei`" length="50" />
+		<property name="DsObservacaoOrdcomei" type="String" column="`ds_observacao_ordcomei`" length="500" />
+		<property name="DtAlteracaoOcOrdcomei" type="String" column="`dt_alteracao_oc_ordcomei`" length="10" />
+		<property name="DtAlteracaoOrdcomei" type="DateTime" column="`dt_alteracao_ordcomei`" />
+		<property name="DtCancelamentoOrdcomei" type="String" column="`dt_cancelamento_ordcomei`" length="10" />
+		<property name="DtGravacaoOrdcomei" type="String" column="`dt_gravacao_ordcomei`" length="19" />
+		<property name="DtHrOrdemCompraOrdcomei" type="String" column="`dt_hr_ordem_compra_ordcomei`" length="19" />
+		<property name="DtIntegracaoOrdcomei" type="DateTime" column="`dt_integracao_ordcomei`" />
+		<property name="DtPrevisaoEntregaOrdcomei" type="String" column="`dt_previsao_entrega_ordcomei`" length="10" />
+		<property name="IdUnidadeFederativaOrdcomei" type="String" column="`id_unidade_federativa_ordcomei`" length="2" />
+		<property name="NmAprovadorOrdcomei" type="String" column="`nm_aprovador_ordcomei`" length="50" />
+		<property name="NmBairroOrdcomei" type="String" column="`nm_bairro_ordcomei`" length="50" />
+		<property name="NmCidadeOrdcomei" type="String" column="`nm_cidade_ordcomei`" length="50" />
+		<property name="NmLogradouroOrdcomei" type="String" column="`nm_logradouro_ordcomei`" length="60" />
+		<property name="NrCepOrdcomei" type="String" column="`nr_cep_ordcomei`" length="8" />
+		<property name="NrRamalOrdcomei" type="String" column="`nr_ramal_ordcomei`" length="5" />
+		<property name="NrTelefoneOrdcomei" type="String" column="`nr_telefone_ordcomei`" length="18" />
+		<property name="SnErroIntegracaoOrdcomei" type="Boolean" column="`sn_erro_integracao_ordcomei`" />
+		<property name="TpLogradouroOrdcomei" type="String" column="`tp_logradouro_ordcomei`" length="10" />
+		<property name="TpMovimentoOrdcomei" type="String" column="`tp_movimento_ordcomei`" length="1" />
+		<property name="TpSituacaoOrdcomei" type="String" column="`tp_situacao_ordcomei`" length="2" />
+		<property name="TpTelefoneOrdcomei" type="String" column="`tp_telefone_ordcomei`" length="1" />
+		<many-to-one name="OrdemCompra" class="OrdemCompra" column="`id_ordem_compra_ordcom`" not-null="false" fetch="select" />
+		<set name="ProdutoOrdemCompraEntradaInts" inverse="true">
+			<key column="`id_ordem_compra_ordcomei`" />
+			<one-to-many class="ProdutoOrdemCompraEntradaInt" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

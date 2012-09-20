@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="FaturaProdutoOrdemCompra" table="`Fatura_Produto_Ordem_Compra`" schema="`dbo`">
+		<id name="IdFaturaProdutoFtprdocom" access="property" column="`id_fatura_produto_ftprdocom`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoFtprdocom" type="DateTime" column="`dt_alteracao_ftprdocom`" />
+		<property name="DtCalcComissaoFtprdocom" type="DateTime" column="`dt_calc_comissao_ftprdocom`" />
+		<property name="DtValidadeProdutoFtprdocom" type="DateTime" column="`dt_validade_produto_ftprdocom`" />
+		<property name="NrLoteProdutoFtprdocom" type="String" column="`nr_lote_produto_ftprdocom`" length="15" />
+		<property name="PcComissaoFtprdocom" type="Decimal" column="`pc_comissao_ftprdocom`" />
+		<property name="PcIpiProdutoFtprdocom" type="Decimal" column="`pc_ipi_produto_ftprdocom`" />
+		<property name="QtProdutoFaturaOcFtprdocom" type="Int32" column="`qt_produto_fatura_oc_ftprdocom`" />
+		<property name="TpFreteProdutoFtprdocom" type="String" column="`tp_frete_produto_ftprdocom`" length="1" />
+		<property name="VlComissaoFtprdocom" type="Decimal" column="`vl_comissao_ftprdocom`" />
+		<property name="VlPrecoProdutoFtprdocom" type="Decimal" column="`vl_preco_produto_ftprdocom`" />
+		<many-to-one name="FaturaOrdemCompra" class="FaturaOrdemCompra" column="`id_fatura_ordem_comp_fatocom`" not-null="true" fetch="select" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

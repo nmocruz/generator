@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="HistoricoStatusPropostum" table="`Historico_Status_Proposta`" schema="`dbo`">
+		<id name="IdHistStatusPropostaHtstpro" access="property" column="`id_hist_status_proposta_htstpro`">
+			<generator class="native" />
+		</id>
+		<property name="DsJustificativaHtstpro" type="String" column="`ds_justificativa_htstpro`" length="250" />
+		<property name="DtAlteracaoHtstpro" type="DateTime" column="`dt_alteracao_htstpro`" />
+		<property name="DtStatusPropostaHtstpro" type="DateTime" column="`dt_status_proposta_htstpro`" />
+		<many-to-one name="PropostaLoteLicitacao" class="PropostaLoteLicitacao" column="`id_proposta_lote_licitacao_plotlic`" not-null="true" fetch="select" />
+		<many-to-one name="StatusPropostum" class="StatusPropostum" column="`id_status_proposta_stpro`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

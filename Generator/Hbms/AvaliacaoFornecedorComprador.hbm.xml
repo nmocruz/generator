@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="AvaliacaoFornecedorComprador" table="`Avaliacao_Fornecedor_Comprador`" schema="`dbo`">
+		<id name="IdAvaliacFornCompAvaforcom" access="property" column="`id_avaliac_forn_comp_avaforcom`">
+			<generator class="native" />
+		</id>
+		<property name="DsJustificativaAvaliacaoAvaforcom" type="String" column="`ds_justificativa_avaliacao_avaforcom`" length="250" />
+		<property name="DsJustificativaBloqFornecAvaforcom" type="String" column="`ds_justificativa_bloq_fornec_avaforcom`" length="250" />
+		<property name="DtCadastroAvaforcom" type="DateTime" column="`dt_cadastro_avaforcom`" />
+		<property name="SnBloqueioFornecedorAvaforcom" type="Boolean" column="`sn_bloqueio_fornecedor_avaforcom`" />
+		<property name="VlNotaAvaliacaoAvaforcom" type="Double" column="`vl_nota_avaliacao_avaforcom`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="ConceitoAvaliacao" class="ConceitoAvaliacao" column="`id_conceito_avaliacao_conava`" not-null="true" fetch="select" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

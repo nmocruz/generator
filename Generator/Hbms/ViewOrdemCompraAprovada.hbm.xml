@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="PCronos.Entities" namespace="PCronos.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ViewOrdemCompraAprovada" table="View_Ordem_Compra_Aprovada" lazy="true" >
+    <property name="Valor">
+      <column name="valor" sql-type="decimal" not-null="false" />
+    </property>
+    <property name="IdProdutoProd">
+      <column name="id_produto_prod" sql-type="int" not-null="true" />
+    </property>
+    <property name="DtCadastroOrdcom">
+      <column name="dt_cadastro_ordcom" sql-type="datetime" not-null="true" />
+    </property>
+    <property name="IdCompradorCompr">
+      <column name="id_comprador_compr" sql-type="int" not-null="true" />
+    </property>
+    <property name="IdCotacaoCot">
+      <column name="id_cotacao_cot" sql-type="int" not-null="true" />
+    </property>
+    <property name="Quantidade">
+      <column name="quantidade" sql-type="int" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

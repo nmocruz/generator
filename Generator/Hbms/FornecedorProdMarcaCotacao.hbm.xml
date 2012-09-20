@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="FornecedorProdMarcaCotacao" table="`Fornecedor_Prod_Marca_Cotacao`" schema="`dbo`">
+		<id name="IdFornecProdMarcaFpmarcot" access="property" column="`id_fornec_prod_marca_fpmarcot`">
+			<generator class="native" />
+		</id>
+		<property name="DsJustificativaCompraFpmarcot" type="String" column="`ds_justificativa_compra_fpmarcot`" length="250" />
+		<property name="DsObservacaoFornecFpmarcot" type="String" column="`ds_observacao_fornec_fpmarcot`" length="250" />
+		<property name="DtAlteracaoFpmarcot" type="DateTime" column="`dt_alteracao_fpmarcot`" />
+		<property name="DtCadastroFpmarcot" type="DateTime" column="`dt_cadastro_fpmarcot`" />
+		<property name="DtDesativacaoFpmarcot" type="DateTime" column="`dt_desativacao_fpmarcot`" />
+		<property name="DtFabricacaoProdutoFpmarcot" type="DateTime" column="`dt_fabricacao_produto_fpmarcot`" />
+		<property name="DtHrOfertaFpmarcot" type="DateTime" column="`dt_hr_oferta_fpmarcot`" />
+		<property name="DtValidadeProdutoFpmarcot" type="DateTime" column="`dt_validade_produto_fpmarcot`" />
+		<property name="PcIpiProdutoFpmarcot" type="Decimal" column="`pc_ipi_produto_fpmarcot`" />
+		<property name="PcRentabilidadeProdFpmarcot" type="Decimal" column="`pc_rentabilidade_prod_fpmarcot`" />
+		<property name="QtDisponivelProdutoFpmarcot" type="Int32" column="`qt_disponivel_produto_fpmarcot`" />
+		<property name="QtEmbalagemProdutoFpmarcot" type="Int32" column="`qt_embalagem_produto_fpmarcot`" />
+		<property name="QtMinimaProdutoFpmarcot" type="Int32" column="`qt_minima_produto_fpmarcot`" />
+		<property name="SnNovaQtEmbalagemFpmarcot" type="Boolean" column="`sn_nova_qt_embalagem_fpmarcot`" />
+		<property name="SnPrecoContratoFpmarcot" type="Boolean" column="`sn_preco_contrato_fpmarcot`" />
+		<property name="SnPrecoSobconsultaFpmarcot" type="Boolean" column="`sn_preco_sobconsulta_fpmarcot`" />
+		<property name="SnSelecaoFpmarcot" type="Boolean" column="`sn_selecao_fpmarcot`" />
+		<property name="SnSelecaoOriginalFpmarcot" type="Boolean" column="`sn_selecao_original_fpmarcot`" />
+		<property name="VlCifProdutoFpmarcot" type="Decimal" column="`vl_cif_produto_fpmarcot`" />
+		<property name="VlFobProdutoFpmarcot" type="Decimal" column="`vl_fob_produto_fpmarcot`" />
+		<many-to-one name="FornecedorCotacao" class="FornecedorCotacao" column="`id_fornecedor_cotacao_forcot`" not-null="true" fetch="select" />
+		<set name="HistoricoValorCotacaos" inverse="true">
+			<key column="`id_fornec_prod_marca_fpmarcot`" />
+			<one-to-many class="HistoricoValorCotacao" />
+		</set>
+		<many-to-one name="ProdutoCotacao" class="ProdutoCotacao" column="`id_produto_cotacao_prdcot`" not-null="true" fetch="select" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="true" fetch="select" />
+		<set name="SelecaoOfertaCotacaos" inverse="true">
+			<key column="`id_fornec_prod_marca_fpmarcot`" />
+			<one-to-many class="SelecaoOfertaCotacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

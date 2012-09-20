@@ -1,0 +1,14 @@
+﻿<#@ template debug="true"  hostspecific="true" language="C#" #>
+<#@ import namespace="AGenerator"  #>
+<#@ import namespace="AGenerator.Templating"  #>
+<#@ output extension=".cs" #>
+<#    
+    var nome = "";
+    var namespacename = "";
+    var EntityName="";
+    
+    TextTemplateHost c = Host as TextTemplateHost;
+    EntityModel model = c.Model;
+
+    
+#>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="EquipeLicitacao" table="`Equipe_Licitacao`" schema="`dbo`">
+		<id name="IdEquipeLicitacaoEqplic" access="property" column="`id_equipe_licitacao_eqplic`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoEqplic" type="DateTime" column="`dt_alteracao_eqplic`" />
+		<property name="DtCadastroEqplic" type="DateTime" column="`dt_cadastro_eqplic`" />
+		<property name="DtDesativacaoEqplic" type="DateTime" column="`dt_desativacao_eqplic`" />
+		<many-to-one name="Licitacao" class="Licitacao" column="`id_licitacao_lic`" not-null="true" fetch="select" />
+		<many-to-one name="PerfilAcesso" class="PerfilAcesso" column="`id_perfil_acesso_perace`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_eqp_licitacao_ususis`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

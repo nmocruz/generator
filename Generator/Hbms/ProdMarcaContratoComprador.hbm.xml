@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdMarcaContratoComprador" table="`Prod_Marca_Contrato_Comprador`" schema="`dbo`">
+		<id name="IdPrdMarcaContrCompPmccom" access="property" column="`id_prd_marca_contr_comp_pmccom`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoPmccom" type="DateTime" column="`dt_alteracao_pmccom`" />
+		<property name="DtCadastroPmccom" type="DateTime" column="`dt_cadastro_pmccom`" />
+		<property name="DtIndisponibilidProdPmccom" type="DateTime" column="`dt_indisponibilid_prod_pmccom`" />
+		<property name="PcIpiProdComprPmccom" type="Decimal" column="`pc_ipi_prod_compr_pmccom`" />
+		<property name="QtCompraPrevistaConcom" type="Int32" column="`qt_compra_prevista_concom`" />
+		<property name="QtEmbalagemProdutoPmccom" type="Int32" column="`qt_embalagem_produto_pmccom`" />
+		<property name="VlCifProdComprPmccom" type="Decimal" column="`vl_cif_prod_compr_pmccom`" />
+		<property name="VlFobProdComprPmccom" type="Decimal" column="`vl_fob_prod_compr_pmccom`" />
+		<many-to-one name="ContratoComprador" class="ContratoComprador" column="`id_contrato_comprador_concom`" not-null="true" fetch="select" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

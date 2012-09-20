@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="MensagemPadrao" table="`Mensagem_Padrao`" schema="`dbo`">
+		<id name="IdMensagemPadraoMsgpad" access="property" column="`id_mensagem_padrao_msgpad`">
+			<generator class="native" />
+		</id>
+		<property name="DsMensagemPadraoMsgpad" type="String" column="`ds_mensagem_padrao_msgpad`" length="250" />
+		<property name="DtAlteracaoMsgpad" type="DateTime" column="`dt_alteracao_msgpad`" />
+		<property name="DtCadastroMsgpad" type="DateTime" column="`dt_cadastro_msgpad`" />
+		<property name="DtDesativacaoMsgpad" type="DateTime" column="`dt_desativacao_msgpad`" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_mens_padrao_msgpad`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Marca" table="`Marca`" schema="`dbo`">
+		<id name="IdMarca" access="property" column="`id_marca`">
+			<generator class="native" />
+		</id>
+		<property name="DsMarca" type="String" column="`ds_marca`" length="50" />
+		<property name="DtAlteracaoMarca" type="DateTime" column="`dt_alteracao_marca`" />
+		<property name="DtCadastroMarca" type="DateTime" column="`dt_cadastro_marca`" />
+		<property name="DtDesativacaoMarca" type="DateTime" column="`dt_desativacao_marca`" />
+		<set name="DeParaMarcas" inverse="true">
+			<key column="`id_marca`" />
+			<one-to-many class="DeParaMarca" />
+		</set>
+		<set name="MarcaFornecedors" inverse="true">
+			<key column="`id_marca`" />
+			<one-to-many class="MarcaFornecedor" />
+		</set>
+		<set name="ProdutoCompradors" inverse="true">
+			<key column="`id_marca`" />
+			<one-to-many class="ProdutoComprador" />
+		</set>
+		<set name="ProdutoMarcas" inverse="true">
+			<key column="`id_marca`" />
+			<one-to-many class="ProdutoMarca" />
+		</set>
+		<set name="ProdutoOrdemCompraSaidaInts" inverse="true">
+			<key column="`id_marca`" />
+			<one-to-many class="ProdutoOrdemCompraSaidaInt" />
+		</set>
+		<set name="ProdutoRequisicaoEntradaInts" inverse="true">
+			<key column="`id_marca`" />
+			<one-to-many class="ProdutoRequisicaoEntradaInt" />
+		</set>
+		<set name="SubMarcas" inverse="true">
+			<key column="`id_marca`" />
+			<one-to-many class="SubMarca" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

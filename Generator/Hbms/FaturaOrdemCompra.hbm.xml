@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="FaturaOrdemCompra" table="`Fatura_Ordem_Compra`" schema="`dbo`">
+		<id name="IdFaturaOrdemCompFatocom" access="property" column="`id_fatura_ordem_comp_fatocom`">
+			<generator class="native" />
+		</id>
+		<property name="DsObservacaoFatocom" type="String" column="`ds_observacao_fatocom`" length="100" />
+		<property name="DtAlteracaoPrdocom" type="DateTime" column="`dt_alteracao_prdocom`" />
+		<property name="DtCadastroFatocom" type="DateTime" column="`dt_cadastro_fatocom`" />
+		<property name="DtCancelamentoFatocom" type="DateTime" column="`dt_cancelamento_fatocom`" />
+		<property name="DtEmissaoNotaFiscalFatocom" type="DateTime" column="`dt_emissao_nota_fiscal_fatocom`" />
+		<property name="DtPrevEntregaAlterFatocom" type="DateTime" column="`dt_prev_entrega_alter_fatocom`" />
+		<property name="DtPrevEntregaOrigFatocom" type="DateTime" column="`dt_prev_entrega_orig_fatocom`" />
+		<property name="DtRealEntregaFatocom" type="DateTime" column="`dt_real_entrega_fatocom`" />
+		<property name="DtVenctoNotaFiscalFatocom" type="DateTime" column="`dt_vencto_nota_fiscal_fatocom`" />
+		<property name="NrNotaFiscalFatocom" type="String" column="`nr_nota_fiscal_fatocom`" length="20" />
+		<set name="FaturaProdutoOrdemCompras" inverse="true">
+			<key column="`id_fatura_ordem_comp_fatocom`" />
+			<one-to-many class="FaturaProdutoOrdemCompra" />
+		</set>
+		<many-to-one name="OrdemCompra" class="OrdemCompra" column="`id_ordem_compra_ordcom`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

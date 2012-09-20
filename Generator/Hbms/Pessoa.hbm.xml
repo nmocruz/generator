@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Pessoa" table="`Pessoa`" schema="`dbo`">
+		<id name="IdPessoa" access="property" column="`id_pessoa`">
+			<generator class="native" />
+		</id>
+		<property name="ArImagemPessoa" type="BinaryBlob" column="`ar_imagem_pessoa`" />
+		<property name="CdSexoPessoa" type="String" column="`cd_sexo_pessoa`" length="1" />
+		<property name="DsEmailPessoa" type="String" column="`ds_email_pessoa`" length="500" />
+		<property name="DsObservacaoPessoa" type="String" column="`ds_observacao_pessoa`" length="500" />
+		<property name="DsWebsitePessoa" type="String" column="`ds_website_pessoa`" length="50" />
+		<property name="DtAlteracaoPessoa" type="DateTime" column="`dt_alteracao_pessoa`" />
+		<property name="DtCadastroPessoa" type="DateTime" column="`dt_cadastro_pessoa`" />
+		<property name="DtDesativacaoPessoa" type="DateTime" column="`dt_desativacao_pessoa`" />
+		<property name="DtNascimentoPessoa" type="DateTime" column="`dt_nascimento_pessoa`" />
+		<property name="NmPessoa" type="String" column="`nm_pessoa`" length="50" />
+		<property name="NmRazaoSocial" type="String" column="`nm_razao_social`" length="50" />
+		<property name="NrCnpjPessoa" type="String" column="`nr_cnpj_pessoa`" length="14" />
+		<property name="NrCpfPessoa" type="String" column="`nr_cpf_pessoa`" length="11" />
+		<property name="NrInscrEstadualPessoa" type="String" column="`nr_inscr_estadual_pessoa`" length="14" />
+		<property name="NrInscrMunicipalPessoa" type="String" column="`nr_inscr_municipal_pessoa`" length="15" />
+		<property name="TpNaturezaPessoa" type="String" column="`tp_natureza_pessoa`" length="1" />
+		<set name="CentralCompras" inverse="true">
+			<key column="`id_pessoa`" />
+			<one-to-many class="CentralCompra" />
+		</set>
+		<set name="Compradors" inverse="true">
+			<key column="`id_pessoa`" />
+			<one-to-many class="Comprador" />
+		</set>
+		<set name="EnderecoPessoas" inverse="true">
+			<key column="`id_pessoa`" />
+			<one-to-many class="EnderecoPessoa" />
+		</set>
+		<set name="Fornecedors" inverse="true">
+			<key column="`id_pessoa`" />
+			<one-to-many class="Fornecedor" />
+		</set>
+		<set name="InterlocutorPessoaJuridicas" inverse="true">
+			<key column="`id_pessoa`" />
+			<one-to-many class="InterlocutorPessoaJuridica" />
+		</set>
+		<set name="InterlocutorPessoaJuridicas1" inverse="true">
+			<key column="`id_pessoa_juridica`" />
+			<one-to-many class="InterlocutorPessoaJuridica" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+		<set name="UsuarioSistemas" inverse="true">
+			<key column="`id_pessoa`" />
+			<one-to-many class="UsuarioSistema" />
+		</set>
+	</class>
+</hibernate-mapping>

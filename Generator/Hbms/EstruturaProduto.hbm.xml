@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="EstruturaProduto" table="`Estrutura_Produto`" schema="`dbo`">
+		<id name="IdEstruturaProdutoEstprd" access="property" column="`id_estrutura_produto_estprd`">
+			<generator class="native" />
+		</id>
+		<property name="DsEstruturaProdutoEstprd" type="String" column="`ds_estrutura_produto_estprd`" length="50" />
+		<property name="DtAlteracaoEstprd" type="DateTime" column="`dt_alteracao_estprd`" />
+		<property name="DtCadastroEstprd" type="DateTime" column="`dt_cadastro_estprd`" />
+		<property name="DtDesativacaoEstprd" type="DateTime" column="`dt_desativacao_estprd`" />
+		<property name="DtValidacaoEstprd" type="DateTime" column="`dt_validacao_estprd`" />
+		<property name="SnAnexoEstprd" type="Boolean" column="`sn_anexo_estprd`" />
+		<property name="SnApresentacaoEstprd" type="Boolean" column="`sn_apresentacao_estprd`" />
+		<property name="SnCdBarrasEstprd" type="Boolean" column="`sn_cd_barras_estprd`" />
+		<property name="SnClasseEstprd" type="Boolean" column="`sn_classe_estprd`" />
+		<property name="SnCorEstprd" type="Boolean" column="`sn_cor_estprd`" />
+		<property name="SnEmbalagemEstprd" type="Boolean" column="`sn_embalagem_estprd`" />
+		<property name="SnFibraEstprd" type="Boolean" column="`sn_fibra_estprd`" />
+		<property name="SnFioEstprd" type="Boolean" column="`sn_fio_estprd`" />
+		<property name="SnGramaturaEstprd" type="Boolean" column="`sn_gramatura_estprd`" />
+		<property name="SnIcmsEstprd" type="Boolean" column="`sn_icms_estprd`" />
+		<property name="SnImagemEstprd" type="Boolean" column="`sn_imagem_estprd`" />
+		<property name="SnIpiEstprd" type="Boolean" column="`sn_ipi_estprd`" />
+		<property name="SnModeloEstprd" type="Boolean" column="`sn_modelo_estprd`" />
+		<property name="SnNcmEstprd" type="Boolean" column="`sn_ncm_estprd`" />
+		<property name="SnNomeFantasiaEstprd" type="Boolean" column="`sn_nome_fantasia_estprd`" />
+		<property name="SnPesoEstprd" type="Boolean" column="`sn_peso_estprd`" />
+		<property name="SnTamanhoEstprd" type="Boolean" column="`sn_tamanho_estprd`" />
+		<property name="SnUltimoNivelEstprd" type="Boolean" column="`sn_ultimo_nivel_estprd`" />
+		<property name="SnVoltagemEstprd" type="Boolean" column="`sn_voltagem_estprd`" />
+		<set name="EstruturaProdutos" inverse="true">
+			<key column="`id_nivel_superior_estprd`" />
+			<one-to-many class="EstruturaProduto" />
+		</set>
+		<many-to-one name="IdNivelSuperiorEstprd" class="EstruturaProduto" column="`id_nivel_superior_estprd`" not-null="false" fetch="select" />
+		<many-to-one name="NivelEstrutura" class="NivelEstrutura" column="`id_nivel_estrutura_nivest`" not-null="true" fetch="select" />
+		<set name="Produtos" inverse="true">
+			<key column="`id_estrutura_produto_estprd`" />
+			<one-to-many class="Produto" />
+		</set>
+		<set name="SegmentoFornecedors" inverse="true">
+			<key column="`id_estrutura_produto_estprd`" />
+			<one-to-many class="SegmentoFornecedor" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

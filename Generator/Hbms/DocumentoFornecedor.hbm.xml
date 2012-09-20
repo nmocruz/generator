@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="DocumentoFornecedor" table="`Documento_Fornecedor`" schema="`dbo`">
+		<id name="IdDocumentoFornecedorDocfor" access="property" column="`id_documento_fornecedor_docfor`">
+			<generator class="native" />
+		</id>
+		<property name="AqImagemDocumentoDocfor" type="BinaryBlob" column="`aq_imagem_documento_docfor`" />
+		<property name="DtAlteracaoDocfor" type="DateTime" column="`dt_alteracao_docfor`" />
+		<property name="DtCadastroDocfor" type="DateTime" column="`dt_cadastro_docfor`" />
+		<property name="DtDesativacaoDocfor" type="DateTime" column="`dt_desativacao_docfor`" />
+		<property name="DtFimValidadeDocfor" type="DateTime" column="`dt_fim_validade_docfor`" />
+		<property name="DtIniValidadeDocfor" type="DateTime" column="`dt_ini_validade_docfor`" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<many-to-one name="TipoDocumento" class="TipoDocumento" column="`id_tipo_documento_tpdoc`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

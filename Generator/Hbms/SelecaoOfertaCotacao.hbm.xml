@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="SelecaoOfertaCotacao" table="`Selecao_Oferta_Cotacao`" schema="`dbo`">
+		<id name="IdSelecOfertaCotacaoSofecot" access="property" column="`id_selec_oferta_cotacao_sofecot`">
+			<generator class="native" />
+		</id>
+		<property name="DsJustificativaCompraSofecot" type="String" column="`ds_justificativa_compra_sofecot`" length="250" />
+		<property name="DtAlteracaoSofecot" type="DateTime" column="`dt_alteracao_sofecot`" />
+		<property name="DtCadastroSofecot" type="DateTime" column="`dt_cadastro_sofecot`" />
+		<property name="DtDesativacaoSofecot" type="DateTime" column="`dt_desativacao_sofecot`" />
+		<property name="SnSelecaoOriginalSofecot" type="Boolean" column="`sn_selecao_original_sofecot`" />
+		<property name="SnSelecaoSofecot" type="Boolean" column="`sn_selecao_sofecot`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="FornecedorProdMarcaCotacao" class="FornecedorProdMarcaCotacao" column="`id_fornec_prod_marca_fpmarcot`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

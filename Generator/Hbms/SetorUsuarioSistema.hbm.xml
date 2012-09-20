@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="SetorUsuarioSistema" table="`Setor_Usuario_Sistema`" schema="`dbo`">
+		<id name="IdSetorUsuSistemaSetusis" access="property" column="`id_setor_usu_sistema_setusis`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoSetusis" type="DateTime" column="`dt_alteracao_setusis`" />
+		<property name="DtCadastroSetusis" type="DateTime" column="`dt_cadastro_setusis`" />
+		<property name="DtDesativacaoSetusis" type="DateTime" column="`dt_desativacao_setusis`" />
+		<many-to-one name="SetorComprador" class="SetorComprador" column="`id_setor_comprador_setcom`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_setor_compr_ususis`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

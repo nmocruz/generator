@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TipoClassificacaoProduto" table="`Tipo_Classificacao_Produto`" schema="`dbo`">
+		<id name="IdTipoClassificacaoTpclaprd" access="property" column="`id_tipo_classificacao_tpclaprd`">
+			<generator class="native" />
+		</id>
+		<property name="CdTipoClassificacaoTpclaprd" type="String" column="`cd_tipo_classificacao_tpclaprd`" length="1" />
+		<property name="DsTipoClassificacaoTpclaprd" type="String" column="`ds_tipo_classificacao_tpclaprd`" length="50" />
+		<property name="DtAlteracaoTpclaprd" type="DateTime" column="`dt_alteracao_tpclaprd`" />
+		<property name="DtCadastroTpclaprd" type="DateTime" column="`dt_cadastro_tpclaprd`" />
+		<property name="DtDesativacaoTpclaprd" type="DateTime" column="`dt_desativacao_tpclaprd`" />
+		<property name="SnClassificacaoPositivaTpclaprd" type="Boolean" column="`sn_classificacao_positiva_tpclaprd`" />
+		<property name="SnClassificDefaultTpclaprd" type="Boolean" column="`sn_classific_default_tpclaprd`" />
+		<set name="ClassificacaoProdutoMarcas" inverse="true">
+			<key column="`id_tipo_classificacao_tpclaprd`" />
+			<one-to-many class="ClassificacaoProdutoMarca" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

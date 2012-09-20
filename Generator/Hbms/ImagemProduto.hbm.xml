@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ImagemProduto" table="`Imagem_Produto`" schema="`dbo`">
+		<id name="IdImagemProdutoImgprd" access="property" column="`id_imagem_produto_imgprd`">
+			<generator class="native" />
+		</id>
+		<property name="AqImagemProdutoImgprd" type="BinaryBlob" column="`aq_imagem_produto_imgprd`" />
+		<property name="DsImagemProdutoImgprd" type="String" column="`ds_imagem_produto_imgprd`" length="100" />
+		<property name="DtAlteracaoImgprd" type="DateTime" column="`dt_alteracao_imgprd`" />
+		<property name="DtCadastroImgprd" type="DateTime" column="`dt_cadastro_imgprd`" />
+		<property name="DtFimValidadeImgprd" type="DateTime" column="`dt_fim_validade_imgprd`" />
+		<property name="DtIniValidadeImgprd" type="DateTime" column="`dt_ini_validade_imgprd`" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

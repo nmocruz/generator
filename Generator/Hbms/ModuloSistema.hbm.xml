@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ModuloSistema" table="`Modulo_Sistema`" schema="`dbo`">
+		<id name="IdModuloSistemaModsis" access="property" column="`id_modulo_sistema_modsis`">
+			<generator class="native" />
+		</id>
+		<property name="DsModuloSistemaModsis" type="String" column="`ds_modulo_sistema_modsis`" length="50" />
+		<property name="DtAlteracaoModsis" type="DateTime" column="`dt_alteracao_modsis`" />
+		<property name="DtCadastroModsis" type="DateTime" column="`dt_cadastro_modsis`" />
+		<property name="DtDesativacaoModsis" type="DateTime" column="`dt_desativacao_modsis`" />
+		<set name="FuncaoSistemas" inverse="true">
+			<key column="`id_modulo_sistema_modsis`" />
+			<one-to-many class="FuncaoSistema" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

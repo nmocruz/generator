@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="PropostaLoteLicitacao" table="`Proposta_Lote_Licitacao`" schema="`dbo`">
+		<id name="IdPropostaLoteLicitacaoPlotlic" access="property" column="`id_proposta_lote_licitacao_plotlic`">
+			<generator class="native" />
+		</id>
+		<property name="DsObservacaoPlotlic" type="String" column="`ds_observacao_plotlic`" length="500" />
+		<property name="DsPedidoReconsideracaoPlotlic" type="String" column="`ds_pedido_reconsideracao_plotlic`" length="250" />
+		<property name="DsRespostaReconsideracaoPlotlic" type="String" column="`ds_resposta_reconsideracao_plotlic`" length="250" />
+		<property name="DtAlteracaoPlotlic" type="DateTime" column="`dt_alteracao_plotlic`" />
+		<property name="DtCadastroPlotlic" type="DateTime" column="`dt_cadastro_plotlic`" />
+		<property name="DtCancelamentoPlotlic" type="DateTime" column="`dt_cancelamento_plotlic`" />
+		<property name="DtClassificacaoPlotlic" type="DateTime" column="`dt_classificacao_plotlic`" />
+		<property name="DtDesclassificacaoPlotlic" type="DateTime" column="`dt_desclassificacao_plotlic`" />
+		<property name="DtPedidoReconsideracaoPlotlic" type="DateTime" column="`dt_pedido_reconsideracao_plotlic`" />
+		<property name="DtRespostaReconsideracaoPlotlic" type="DateTime" column="`dt_resposta_reconsideracao_plotlic`" />
+		<property name="VlPropostaLoteLicitacaoPlotlic" type="Decimal" column="`vl_proposta_lote_licitacao_plotlic`" />
+		<many-to-one name="FornecedorLicitacao" class="FornecedorLicitacao" column="`id_fornecedor_licitacao_forlic`" not-null="true" fetch="select" />
+		<set name="HistoricoStatusProposta" inverse="true">
+			<key column="`id_proposta_lote_licitacao_plotlic`" />
+			<one-to-many class="HistoricoStatusPropostum" />
+		</set>
+		<many-to-one name="LoteLicitacao" class="LoteLicitacao" column="`id_lote_licitacao_lotlic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

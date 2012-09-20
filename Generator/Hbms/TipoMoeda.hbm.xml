@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TipoMoeda" table="`Tipo_Moeda`" schema="`dbo`">
+		<id name="IdTipoMoedaTpmda" access="property" column="`id_tipo_moeda_tpmda`">
+			<generator class="native" />
+		</id>
+		<property name="DsSimboloMoedaTpmda" type="String" column="`ds_simbolo_moeda_tpmda`" length="5" />
+		<property name="DsTipoMoedaTpmda" type="String" column="`ds_tipo_moeda_tpmda`" length="50" />
+		<property name="DtAlteracaoTpmda" type="DateTime" column="`dt_alteracao_tpmda`" />
+		<property name="DtCadastroTpmda" type="DateTime" column="`dt_cadastro_tpmda`" />
+		<property name="DtDesativacaoTpmda" type="DateTime" column="`dt_desativacao_tpmda`" />
+		<set name="Licitacaos" inverse="true">
+			<key column="`id_tipo_moeda_tpmda`" />
+			<one-to-many class="Licitacao" />
+		</set>
+		<many-to-one name="Pai" class="Pai" column="`id_pais`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

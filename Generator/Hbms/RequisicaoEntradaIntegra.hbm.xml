@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="RequisicaoEntradaIntegra" table="`Requisicao_Entrada_Integra`" schema="`dbo`">
+		<id name="IdRequisicaoEntrIntReqei" access="property" column="`id_requisicao_entr_int_reqei`">
+			<generator class="native" />
+		</id>
+		<property name="CdCentroCustoReqei" type="String" column="`cd_centro_custo_reqei`" length="20" />
+		<property name="CdRequisicaoReqei" type="String" column="`cd_requisicao_reqei`" length="20" />
+		<property name="CdStatusRequisicaoReqei" type="String" column="`cd_status_requisicao_reqei`" length="1" />
+		<property name="CdUsuarioSolicReqei" type="String" column="`cd_usuario_solic_reqei`" length="50" />
+		<property name="DsObservacaoReqei" type="String" column="`ds_observacao_reqei`" length="100" />
+		<property name="DtAlteracaoReqei" type="DateTime" column="`dt_alteracao_reqei`" />
+		<property name="DtCadastroReqei" type="DateTime" column="`dt_cadastro_reqei`" />
+		<property name="DtCancelamentoReqei" type="DateTime" column="`dt_cancelamento_reqei`" />
+		<property name="DtRequisicaoReqei" type="DateTime" column="`dt_requisicao_reqei`" />
+		<property name="IdClienteReqei" type="String" column="`id_cliente_reqei`" length="20" />
+		<property name="IdEmpresaReqei" type="String" column="`id_empresa_reqei`" length="20" />
+		<property name="SnReqAprovadaReqei" type="Boolean" column="`sn_req_aprovada_reqei`" />
+		<property name="TpMovimentoReqei" type="String" column="`tp_movimento_reqei`" length="1" />
+		<property name="TpProcesso" type="String" column="`tp_processo`" length="2" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="Cotacao" class="Cotacao" column="`id_cotacao_cot`" not-null="false" fetch="select" />
+		<set name="ProdutoRequisicaoEntradaInts" inverse="true">
+			<key column="`id_requisicao_entr_int_reqei`" />
+			<one-to-many class="ProdutoRequisicaoEntradaInt" />
+		</set>
+		<many-to-one name="SetorComprador" class="SetorComprador" column="`id_setor_comprador_setcom`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

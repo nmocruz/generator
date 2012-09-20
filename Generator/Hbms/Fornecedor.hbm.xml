@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Fornecedor" table="`Fornecedor`" schema="`dbo`">
+		<id name="IdFornecedorFornec" access="property" column="`id_fornecedor_fornec`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoFornec" type="DateTime" column="`dt_alteracao_fornec`" />
+		<property name="DtAssinaturaContratoFornec" type="DateTime" column="`dt_assinatura_contrato_fornec`" />
+		<property name="DtCadastroFornec" type="DateTime" column="`dt_cadastro_fornec`" />
+		<property name="DtDesativacaoFornec" type="DateTime" column="`dt_desativacao_fornec`" />
+		<property name="DtVencimentoContratoFornec" type="DateTime" column="`dt_vencimento_contrato_fornec`" />
+		<property name="QtDiasPrazoEntrFornec" type="Int16" column="`qt_dias_prazo_entr_fornec`" />
+		<property name="QtIntervMinEntregaFornec" type="Int16" column="`qt_interv_min_entrega_fornec`" />
+		<property name="SnCodEstrutProdutoFornec" type="Boolean" column="`sn_cod_estrut_produto_fornec`" />
+		<property name="SnCotacaoTabProdutoFornec" type="Boolean" column="`sn_cotacao_tab_produto_fornec`" />
+		<property name="VlMinimoPedidoCompFornec" type="Decimal" column="`vl_minimo_pedido_comp_fornec`" />
+		<set name="AvaliacaoFornecedorCompradors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="AvaliacaoFornecedorComprador" />
+		</set>
+		<set name="AvaliacaoFornecedors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="AvaliacaoFornecedor" />
+		</set>
+		<set name="ContratoCompradors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="ContratoComprador" />
+		</set>
+		<set name="DeParaFornecedors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="DeParaFornecedor" />
+		</set>
+		<set name="DocumentoFornecedors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="DocumentoFornecedor" />
+		</set>
+		<set name="FornecedorAcompUsuarioSis" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="FornecedorAcompUsuarioSi" />
+		</set>
+		<set name="FornecedorCotacaos" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="FornecedorCotacao" />
+		</set>
+		<set name="FornecedorLicitacaos" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="FornecedorLicitacao" />
+		</set>
+		<set name="Fornecedors" inverse="true">
+			<key column="`id_fornecedor_matriz_fornec`" />
+			<one-to-many class="Fornecedor" />
+		</set>
+		<many-to-one name="IdFornecedorMatrizFornec" class="Fornecedor" column="`id_fornecedor_matriz_fornec`" not-null="false" fetch="select" />
+		<set name="MarcaFornecedors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="MarcaFornecedor" />
+		</set>
+		<set name="OrdemCompras" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="OrdemCompra" />
+		</set>
+		<set name="OrdemCompraSaidaIntegras" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="OrdemCompraSaidaIntegra" />
+		</set>
+		<many-to-one name="Pessoa" class="Pessoa" column="`id_pessoa`" not-null="true" fetch="select" />
+		<set name="ProdutoCompradors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="ProdutoComprador" />
+		</set>
+		<set name="ProdutoFornecedors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="ProdutoFornecedor" />
+		</set>
+		<set name="ProdutoMarcaCompradors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="ProdutoMarcaComprador" />
+		</set>
+		<set name="QuestionamentoSolicitacaoLicitacaos" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="QuestionamentoSolicitacaoLicitacao" />
+		</set>
+		<set name="SegmentoFornecedors" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="SegmentoFornecedor" />
+		</set>
+		<many-to-one name="TipoFornecedor" class="TipoFornecedor" column="`id_tipo_fornecedor_tpfor`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+		<set name="UsuarioSistemas" inverse="true">
+			<key column="`id_fornecedor_fornec`" />
+			<one-to-many class="UsuarioSistema" />
+		</set>
+	</class>
+</hibernate-mapping>

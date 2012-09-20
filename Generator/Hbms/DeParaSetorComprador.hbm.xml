@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="DeParaSetorComprador" table="`DE_PARA_Setor_Comprador`" schema="`dbo`">
+		<id name="IdDeparaSetorComprDpsetcom" access="property" column="`id_depara_setor_compr_dpsetcom`">
+			<generator class="native" />
+		</id>
+		<property name="CdSetorCompradorDpsetcom" type="String" column="`cd_setor_comprador_dpsetcom`" length="20" />
+		<property name="DtAlteracaoDpsetcom" type="DateTime" column="`dt_alteracao_dpsetcom`" />
+		<property name="DtFimVigenciaDpsetcom" type="DateTime" column="`dt_fim_vigencia_dpsetcom`" />
+		<property name="DtIniVigenciaDpsetcom" type="DateTime" column="`dt_ini_vigencia_dpsetcom`" />
+		<many-to-one name="PadraoSistemaIntegrado" class="PadraoSistemaIntegrado" column="`id_padrao_sistema_int_psisint`" not-null="true" fetch="select" />
+		<many-to-one name="SetorComprador" class="SetorComprador" column="`id_setor_comprador_setcom`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

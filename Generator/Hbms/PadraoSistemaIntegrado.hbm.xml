@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="PadraoSistemaIntegrado" table="`Padrao_Sistema_Integrado`" schema="`dbo`">
+		<id name="IdPadraoSistemaIntPsisint" access="property" column="`id_padrao_sistema_int_psisint`">
+			<generator class="native" />
+		</id>
+		<property name="CdVersaoSistemaIntPsisint" type="String" column="`cd_versao_sistema_int_psisint`" length="20" />
+		<property name="DsPadraoSistemaIntPsisint" type="String" column="`ds_padrao_sistema_int_psisint`" length="50" />
+		<property name="DtAlteracaoPsisint" type="DateTime" column="`dt_alteracao_psisint`" />
+		<property name="DtCadastroPsisint" type="DateTime" column="`dt_cadastro_psisint`" />
+		<property name="DtDesativacaoPsisint" type="DateTime" column="`dt_desativacao_psisint`" />
+		<property name="NrPosicaoIniMarcaPsisint" type="Int16" column="`nr_posicao_ini_marca_psisint`" />
+		<property name="NrPosicaoIniProdutoPsisint" type="Int16" column="`nr_posicao_ini_produto_psisint`" />
+		<property name="QtCaracteresMarcaPsisint" type="Int16" column="`qt_caracteres_marca_psisint`" />
+		<property name="QtCaracteresProdutoPsisint" type="Int16" column="`qt_caracteres_produto_psisint`" />
+		<property name="SnAprovaSistemaPsisint" type="Boolean" column="`sn_aprova_sistema_psisint`" />
+		<property name="SnCriptografiaPsisint" type="Boolean" column="`sn_criptografia_psisint`" />
+		<property name="SnDeparaCompradorPsisint" type="Boolean" column="`sn_depara_comprador_psisint`" />
+		<property name="SnDeparaCondPagtoPsisint" type="Boolean" column="`sn_depara_cond_pagto_psisint`" />
+		<property name="SnDeparaFornecedorPsisint" type="Boolean" column="`sn_depara_fornecedor_psisint`" />
+		<property name="SnDeparaMarcaPsisint" type="Boolean" column="`sn_depara_marca_psisint`" />
+		<property name="SnDeparaProdutoMarcaPsisint" type="Boolean" column="`sn_depara_produto_marca_psisint`" />
+		<property name="SnDeparaProdutoPsisint" type="Boolean" column="`sn_depara_produto_psisint`" />
+		<property name="SnDeparaSetorComprPsisint" type="Boolean" column="`sn_depara_setor_compr_psisint`" />
+		<property name="SnDeparaUnidadeProdPsisint" type="Boolean" column="`sn_depara_unidade_prod_psisint`" />
+		<property name="SnGeraOcSistemaPsisint" type="Boolean" column="`sn_gera_oc_sistema_psisint`" />
+		<property name="SnProdutoMarcaPsisint" type="Boolean" column="`sn_produto_marca_psisint`" />
+		<property name="SnSetorCompradorPsisint" type="Boolean" column="`sn_setor_comprador_psisint`" />
+		<property name="SnXmlUnificadoPsisint" type="Boolean" column="`sn_xml_unificado_psisint`" />
+		<set name="Compradors" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="Comprador" />
+		</set>
+		<set name="DeParaCompradors" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaComprador" />
+		</set>
+		<set name="DeParaCondicaoPagamentos" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaCondicaoPagamento" />
+		</set>
+		<set name="DeParaFornecedors" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaFornecedor" />
+		</set>
+		<set name="DeParaMarcas" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaMarca" />
+		</set>
+		<set name="DeParaProdutoMarcas" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaProdutoMarca" />
+		</set>
+		<set name="DeParaProdutos" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaProduto" />
+		</set>
+		<set name="DeParaSetorCompradors" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaSetorComprador" />
+		</set>
+		<set name="DeParaUnidadeProdutos" inverse="true">
+			<key column="`id_padrao_sistema_int_psisint`" />
+			<one-to-many class="DeParaUnidadeProduto" />
+		</set>
+		<many-to-one name="IdPadraoRefCompradorPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_comprador_psisint`" not-null="false" fetch="select" />
+		<many-to-one name="IdPadraoRefCondPagtoPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_cond_pagto_psisint`" not-null="false" fetch="select" />
+		<many-to-one name="IdPadraoRefFornecedorPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_fornecedor_psisint`" not-null="false" fetch="select" />
+		<many-to-one name="IdPadraoRefMarcaPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_marca_psisint`" not-null="false" fetch="select" />
+		<many-to-one name="IdPadraoRefProdMarcaPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_prod_marca_psisint`" not-null="false" fetch="select" />
+		<many-to-one name="IdPadraoRefProdutoPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_produto_psisint`" not-null="false" fetch="select" />
+		<many-to-one name="IdPadraoRefSetorComprPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_setor_compr_psisint`" not-null="false" fetch="select" />
+		<many-to-one name="IdPadraoRefUnidProdPsisint" class="PadraoSistemaIntegrado" column="`id_padrao_ref_unid_prod_psisint`" not-null="false" fetch="select" />
+		<set name="PadraoSistemaIntegrados" inverse="true">
+			<key column="`id_padrao_ref_comprador_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="PadraoSistemaIntegrados1" inverse="true">
+			<key column="`id_padrao_ref_cond_pagto_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="PadraoSistemaIntegrados2" inverse="true">
+			<key column="`id_padrao_ref_fornecedor_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="PadraoSistemaIntegrados3" inverse="true">
+			<key column="`id_padrao_ref_marca_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="PadraoSistemaIntegrados4" inverse="true">
+			<key column="`id_padrao_ref_prod_marca_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="PadraoSistemaIntegrados5" inverse="true">
+			<key column="`id_padrao_ref_produto_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="PadraoSistemaIntegrados6" inverse="true">
+			<key column="`id_padrao_ref_setor_compr_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<set name="PadraoSistemaIntegrados7" inverse="true">
+			<key column="`id_padrao_ref_unid_prod_psisint`" />
+			<one-to-many class="PadraoSistemaIntegrado" />
+		</set>
+		<many-to-one name="RegraMarcaSaidaIntegra" class="RegraMarcaSaidaIntegra" column="`id_regra_marca_saida_rmcasi`" not-null="false" fetch="select" />
+		<many-to-one name="SistemaIntegrado" class="SistemaIntegrado" column="`id_sistema_integrado_sisint`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

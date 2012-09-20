@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="StatusGanhadorLote" table="`Status_Ganhador_Lote`" schema="`dbo`">
+		<id name="IdStatusGanhadorLoteStglot" access="property" column="`id_status_ganhador_lote_stglot`">
+			<generator class="native" />
+		</id>
+		<property name="DsStatusGanhadorLoteStglot" type="String" column="`ds_status_ganhador_lote_stglot`" length="50" />
+		<property name="DtAlteracaoStglot" type="DateTime" column="`dt_alteracao_stglot`" />
+		<property name="DtCadastroStglot" type="DateTime" column="`dt_cadastro_stglot`" />
+		<property name="DtDesativacaoStglot" type="DateTime" column="`dt_desativacao_stglot`" />
+		<set name="HistoricoStatusGanhadorLotes" inverse="true">
+			<key column="`id_status_ganhador_lote_stglot`" />
+			<one-to-many class="HistoricoStatusGanhadorLote" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdutoOrdemCompraEntradaInt" table="`Produto_Ordem_Compra_Entrada_Int`" schema="`dbo`">
+		<id name="IdProdOrdCompraPrdocomei" access="property" column="`id_prod_ord_compra_prdocomei`">
+			<generator class="native" />
+		</id>
+		<property name="CdMarcaPrdocomei" type="String" column="`cd_marca_prdocomei`" length="50" />
+		<property name="CdProdutoMarcaPrdocomei" type="String" column="`cd_produto_marca_prdocomei`" length="15" />
+		<property name="CdProdutoPrdocomei" type="String" column="`cd_produto_prdocomei`" length="20" />
+		<property name="CdUnidadeCompraPrdocomei" type="String" column="`cd_unidade_compra_prdocomei`" length="50" />
+		<property name="DsObservacaoPrdocomei" type="String" column="`ds_observacao_prdocomei`" length="100" />
+		<property name="DtAlteracaoPrdocomei" type="DateTime" column="`dt_alteracao_prdocomei`" />
+		<property name="PcIpiProdutoPrdocomei" type="Decimal" column="`pc_ipi_produto_prdocomei`" />
+		<property name="QtEmbalagemProdutoPrdocomei" type="Int32" column="`qt_embalagem_produto_prdocomei`" />
+		<property name="QtProdOrdCompraPrdocomei" type="Int32" column="`qt_prod_ord_compra_prdocomei`" />
+		<property name="TpFreteProdFornecPrdocomei" type="String" column="`tp_frete_prod_fornec_prdocomei`" length="3" />
+		<property name="VlPrecoProdutoPrdocomei" type="Decimal" column="`vl_preco_produto_prdocomei`" />
+		<many-to-one name="OrdemCompraEntradaIntegra" class="OrdemCompraEntradaIntegra" column="`id_ordem_compra_ordcomei`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

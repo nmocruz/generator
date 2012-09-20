@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="OrdemCompraSaidaIntegra" table="`Ordem_Compra_Saida_Integra`" schema="`dbo`">
+		<id name="IdOrdemCompraOrdcomsi" access="property" column="`id_ordem_compra_ordcomsi`">
+			<generator class="native" />
+		</id>
+		<property name="CdOrdemCompraOrdcomsi" type="String" column="`cd_ordem_compra_ordcomsi`" length="20" />
+		<property name="CdRequisicaoOrdcomsi" type="String" column="`cd_requisicao_ordcomsi`" length="20" />
+		<property name="DsObservacaoOrdcomsi" type="String" column="`ds_observacao_ordcomsi`" length="500" />
+		<property name="DtAlteracaoOrdcomsi" type="DateTime" column="`dt_alteracao_ordcomsi`" />
+		<property name="DtAprovacaoOrdcomsi" type="DateTime" column="`dt_aprovacao_ordcomsi`" />
+		<property name="DtCancelamentoOrdcomsi" type="DateTime" column="`dt_cancelamento_ordcomsi`" />
+		<property name="DtHrOrdemCompraOrdcomsi" type="DateTime" column="`dt_hr_ordem_compra_ordcomsi`" />
+		<property name="DtIntegracaoOrdcomsi" type="DateTime" column="`dt_integracao_ordcomsi`" />
+		<property name="DtPrevisaoEntregaOrdcomsi" type="DateTime" column="`dt_previsao_entrega_ordcomsi`" />
+		<property name="SnErroIntegracaoOrdcomsi" type="Boolean" column="`sn_erro_integracao_ordcomsi`" />
+		<property name="TpMovimentoOrdcomsi" type="String" column="`tp_movimento_ordcomsi`" length="1" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="true" fetch="select" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<many-to-one name="OrdemCompra" class="OrdemCompra" column="`id_ordem_compra_ordcom`" not-null="true" fetch="select" />
+		<set name="ProdutoOrdemCompraSaidaInts" inverse="true">
+			<key column="`id_ordem_compra_ordcomsi`" />
+			<one-to-many class="ProdutoOrdemCompraSaidaInt" />
+		</set>
+		<many-to-one name="StatusOrdemCompra" class="StatusOrdemCompra" column="`id_status_ordem_compr_stocom`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_aprovacao_ususis`" not-null="false" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

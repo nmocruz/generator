@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="InterlocutorPessoaJuridica" table="`Interlocutor_Pessoa_Juridica`" schema="`dbo`">
+		<id name="IdInterlocutorPjIntpj" access="property" column="`id_interlocutor_pj_intpj`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoIntpj" type="DateTime" column="`dt_alteracao_intpj`" />
+		<property name="DtCadastroIntpj" type="DateTime" column="`dt_cadastro_intpj`" />
+		<property name="DtDesativacaoIntpj" type="DateTime" column="`dt_desativacao_intpj`" />
+		<many-to-one name="Cargo" class="Cargo" column="`id_cargo`" not-null="true" fetch="select" />
+		<many-to-one name="Pessoa" class="Pessoa" column="`id_pessoa`" not-null="true" fetch="select" />
+		<many-to-one name="Pessoa1" class="Pessoa" column="`id_pessoa_juridica`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

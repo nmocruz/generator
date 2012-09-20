@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ApresentacaoProduto" table="`Apresentacao_Produto`" schema="`dbo`">
+		<id name="IdApresentacaoProdutoAprprd" access="property" column="`id_apresentacao_produto_aprprd`">
+			<generator class="native" />
+		</id>
+		<property name="DsAbrevApresentProdAprprd" type="String" column="`ds_abrev_apresent_prod_aprprd`" length="5" />
+		<property name="DsApresentacaoProdutoAprprd" type="String" column="`ds_apresentacao_produto_aprprd`" length="50" />
+		<property name="DtAlteracaoAprprd" type="DateTime" column="`dt_alteracao_aprprd`" />
+		<property name="DtCadastroAprprd" type="DateTime" column="`dt_cadastro_aprprd`" />
+		<property name="DtDesativacaoAprprd" type="DateTime" column="`dt_desativacao_aprprd`" />
+		<set name="ProdutoMarcas" inverse="true">
+			<key column="`id_apresentacao_produto_aprprd`" />
+			<one-to-many class="ProdutoMarca" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

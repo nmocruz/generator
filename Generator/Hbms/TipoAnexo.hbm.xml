@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TipoAnexo" table="`Tipo_Anexo`" schema="`dbo`">
+		<id name="IdTipoAnexoTpanx" access="property" column="`id_tipo_anexo_tpanx`">
+			<generator class="native" />
+		</id>
+		<property name="DsTipoAnexoTpanx" type="String" column="`ds_tipo_anexo_tpanx`" length="50" />
+		<property name="DtAlteracaoTpanx" type="DateTime" column="`dt_alteracao_tpanx`" />
+		<property name="DtCadastroTpanx" type="DateTime" column="`dt_cadastro_tpanx`" />
+		<property name="DtDesativacaoTpanx" type="DateTime" column="`dt_desativacao_tpanx`" />
+		<set name="AnexoProdutos" inverse="true">
+			<key column="`id_tipo_anexo_tpanx`" />
+			<one-to-many class="AnexoProduto" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

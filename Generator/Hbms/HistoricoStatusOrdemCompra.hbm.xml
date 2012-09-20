@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="HistoricoStatusOrdemCompra" table="`Historico_Status_Ordem_Compra`" schema="`dbo`">
+		<id name="IdHistStatusOcompHtstocom" access="property" column="`id_hist_status_ocomp_htstocom`">
+			<generator class="native" />
+		</id>
+		<property name="DsJustificativaHtstocom" type="String" column="`ds_justificativa_htstocom`" length="250" />
+		<property name="DtAlteracaoHtstocom" type="DateTime" column="`dt_alteracao_htstocom`" />
+		<property name="DtStatusOrdemComprHtstocom" type="DateTime" column="`dt_status_ordem_compr_htstocom`" />
+		<many-to-one name="OrdemCompra" class="OrdemCompra" column="`id_ordem_compra_ordcom`" not-null="true" fetch="select" />
+		<many-to-one name="StatusOrdemCompra" class="StatusOrdemCompra" column="`id_status_ordem_compr_stocom`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ContrarrazaoLoteLicitacao" table="`Contrarrazao_Lote_Licitacao`" schema="`dbo`">
+		<id name="IdContrarrazaoLoteLicitacaoCrlotlic" access="property" column="`id_contrarrazao_lote_licitacao_crlotlic`">
+			<generator class="native" />
+		</id>
+		<property name="DsContrarrazaoCrlotlic" type="String" column="`ds_contrarrazao_crlotlic`" length="250" />
+		<property name="DsJulgamentoContrarrazaoCrlotlic" type="String" column="`ds_julgamento_contrarrazao_crlotlic`" length="250" />
+		<property name="DtAlteracaoCrlotlic" type="DateTime" column="`dt_alteracao_crlotlic`" />
+		<property name="DtCadastroCrlotlic" type="DateTime" column="`dt_cadastro_crlotlic`" />
+		<property name="DtCancelamentoCrlotlic" type="DateTime" column="`dt_cancelamento_crlotlic`" />
+		<property name="DtJulgamentoContrarrazaoCrlotlic" type="DateTime" column="`dt_julgamento_contrarrazao_crlotlic`" />
+		<property name="SnContrarrazaoProcedenteCrlotlic" type="Boolean" column="`sn_contrarrazao_procedente_crlotlic`" />
+		<many-to-one name="GanhadorLoteLicitacao" class="GanhadorLoteLicitacao" column="`id_ganhador_lote_licitacao_glotlic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Comprador" table="`Comprador`" schema="`dbo`">
+		<id name="IdCompradorCompr" access="property" column="`id_comprador_compr`">
+			<generator class="native" />
+		</id>
+		<property name="CdLoginFtpCompr" type="String" column="`cd_login_ftp_compr`" length="30" />
+		<property name="CdPortaFtpCompr" type="Double" column="`cd_porta_ftp_compr`" />
+		<property name="CdSenhaFtpCompr" type="String" column="`cd_senha_ftp_compr`" length="100" />
+		<property name="ChCriptografiaXmlCompr" type="String" column="`ch_criptografia_xml_compr`" length="100" />
+		<property name="DsDiretorioRootFtpCompr" type="String" column="`ds_diretorio_root_ftp_compr`" length="100" />
+		<property name="DsPastaDownloadFtpCompr" type="String" column="`ds_pasta_download_ftp_compr`" length="50" />
+		<property name="DsPastaUploadFtpCompr" type="String" column="`ds_pasta_upload_ftp_compr`" length="50" />
+		<property name="DsProxyWebserviceCompr" type="String" column="`ds_proxy_webservice_compr`" length="100" />
+		<property name="DsUrlFtpCompr" type="String" column="`ds_url_ftp_compr`" length="100" />
+		<property name="DsUrlWebserviceCompr" type="String" column="`ds_url_webservice_compr`" length="100" />
+		<property name="DtAlteracaoCompr" type="DateTime" column="`dt_alteracao_compr`" />
+		<property name="DtAssinaturaContratoCompr" type="DateTime" column="`dt_assinatura_contrato_compr`" />
+		<property name="DtCadastroCompr" type="DateTime" column="`dt_cadastro_compr`" />
+		<property name="DtDesativacaoCompr" type="DateTime" column="`dt_desativacao_compr`" />
+		<property name="DtVencimentoContratoCompr" type="DateTime" column="`dt_vencimento_contrato_compr`" />
+		<property name="QtDiasPrzValidadeCotCompr" type="Int32" column="`qt_dias_prz_validade_cot_compr`" />
+		<property name="SnCodEstrutProdutoCompr" type="Boolean" column="`sn_cod_estrut_produto_compr`" />
+		<property name="SnCondComercFornecCompr" type="Boolean" column="`sn_cond_comerc_fornec_compr`" />
+		<property name="SnDescrProdutoCentralCompr" type="Boolean" column="`sn_descr_produto_central_compr`" />
+		<property name="SnDivulgGanhadCotacaoCompr" type="Boolean" column="`sn_divulg_ganhad_cotacao_compr`" />
+		<property name="UsTabProdutoCompr" type="Int16" column="`us_tab_produto_compr`" />
+		<set name="AvaliacaoFornecedorCompradors" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="AvaliacaoFornecedorComprador" />
+		</set>
+		<set name="ClassificacaoProdutoMarcas" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="ClassificacaoProdutoMarca" />
+		</set>
+		<set name="CompradorAcompUsuarioSis" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="CompradorAcompUsuarioSi" />
+		</set>
+		<set name="Compradors" inverse="true">
+			<key column="`id_comprador_matriz_compr`" />
+			<one-to-many class="Comprador" />
+		</set>
+		<set name="ContratoCompradors" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="ContratoComprador" />
+		</set>
+		<set name="Cotacaos" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="Cotacao" />
+		</set>
+		<set name="DeParaCompradors" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="DeParaComprador" />
+		</set>
+		<set name="DocumentoCompradors" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="DocumentoComprador" />
+		</set>
+		<many-to-one name="IdCompradorMatrizCompr" class="Comprador" column="`id_comprador_matriz_compr`" not-null="false" fetch="select" />
+		<set name="Licitacaos" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="Licitacao" />
+		</set>
+		<set name="LogErroIntegracaos" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="LogErroIntegracao" />
+		</set>
+		<set name="NivelAprovacaoPedidos" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="NivelAprovacaoPedido" />
+		</set>
+		<set name="OrdemCompras" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="OrdemCompra" />
+		</set>
+		<set name="OrdemCompraSaidaIntegras" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="OrdemCompraSaidaIntegra" />
+		</set>
+		<many-to-one name="PadraoSistemaIntegrado" class="PadraoSistemaIntegrado" column="`id_padrao_sistema_int_psisint`" not-null="false" fetch="select" />
+		<set name="PedidoModelos" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="PedidoModelo" />
+		</set>
+		<many-to-one name="Pessoa" class="Pessoa" column="`id_pessoa`" not-null="true" fetch="select" />
+		<set name="ProdutoCompradors" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="ProdutoComprador" />
+		</set>
+		<set name="ProdutoMarcaCompradors" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="ProdutoMarcaComprador" />
+		</set>
+		<many-to-one name="RamoAtividade" class="RamoAtividade" column="`id_ramo_atividade_ramatv`" not-null="true" fetch="select" />
+		<set name="RequisicaoEntradaIntegras" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="RequisicaoEntradaIntegra" />
+		</set>
+		<set name="SelecaoOfertaCotacaos" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="SelecaoOfertaCotacao" />
+		</set>
+		<set name="SetorCompradors" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="SetorComprador" />
+		</set>
+		<set name="TipoDocumentoObrigatorios" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="TipoDocumentoObrigatorio" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+		<set name="UsuarioSistemas" inverse="true">
+			<key column="`id_comprador_compr`" />
+			<one-to-many class="UsuarioSistema" />
+		</set>
+	</class>
+</hibernate-mapping>

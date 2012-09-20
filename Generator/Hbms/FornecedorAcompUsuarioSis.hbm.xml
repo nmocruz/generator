@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="FornecedorAcompUsuarioSi" table="`Fornecedor_Acomp_Usuario_Sis`" schema="`dbo`">
+		<id name="IdFornecAcompUsusisFacusis" access="property" column="`id_fornec_acomp_ususis_facusis`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoFacusis" type="DateTime" column="`dt_alteracao_facusis`" />
+		<property name="DtCadastroFacusis" type="DateTime" column="`dt_cadastro_facusis`" />
+		<property name="DtDesativacaoFacusis" type="DateTime" column="`dt_desativacao_facusis`" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`id_user_acomp_fornec_ususis`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema1" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

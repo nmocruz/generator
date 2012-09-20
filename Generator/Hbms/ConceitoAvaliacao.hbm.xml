@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ConceitoAvaliacao" table="`Conceito_Avaliacao`" schema="`dbo`">
+		<id name="IdConceitoAvaliacaoConava" access="property" column="`id_conceito_avaliacao_conava`">
+			<generator class="native" />
+		</id>
+		<property name="DsConceitoAvaliacaoConava" type="String" column="`ds_conceito_avaliacao_conava`" length="50" />
+		<property name="DtAlteracaoConava" type="DateTime" column="`dt_alteracao_conava`" />
+		<property name="DtCadastroConava" type="DateTime" column="`dt_cadastro_conava`" />
+		<property name="DtFimVigenciaConava" type="DateTime" column="`dt_fim_vigencia_conava`" />
+		<property name="DtInicioVigenciaConava" type="DateTime" column="`dt_inicio_vigencia_conava`" />
+		<property name="VlFimConceitoAvaliacaoConava" type="Double" column="`vl_fim_conceito_avaliacao_conava`" />
+		<property name="VlIniConceitoAvaliacaoConava" type="Double" column="`vl_ini_conceito_avaliacao_conava`" />
+		<set name="AvaliacaoFornecedorCompradors" inverse="true">
+			<key column="`id_conceito_avaliacao_conava`" />
+			<one-to-many class="AvaliacaoFornecedorComprador" />
+		</set>
+		<set name="AvaliacaoFornecedors" inverse="true">
+			<key column="`id_conceito_avaliacao_conava`" />
+			<one-to-many class="AvaliacaoFornecedor" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

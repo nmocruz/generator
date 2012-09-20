@@ -1,0 +1,34 @@
+﻿<#@ template debug="true"  hostspecific="true" language="C#" #>
+<#@ import namespace="AGenerator"  #>
+<#@ import namespace="AGenerator.Templating"  #>
+<#@ output extension=".cs" #>
+<#    
+    
+    TextTemplateHost c = Host as TextTemplateHost;
+    EntityModel model = c.Model;
+    TypeDefinition definition = c.TypeDefinition;
+    foreach (var item in definition.UsingNamespaces.split(';'))
+    {
+		Write("using {0}",item);  	 
+    }
+    
+#>
+
+namespace <#= definition.Namespace #>
+{
+    public partial class <#= model.ClassName #>ViewModel {
+        <#
+			foreach (PropertyModel item in model.Properties)
+			{#>
+            <# if (item.Length > 0)
+               {
+				#>
+				[MaxLength(<#= tem.Length #>]	
+				<#  
+               } #>
+				[DisplayName("")]
+				public <#= item.DataType #> <#= item.Nome #> { get; set; }
+		<#}
+		 #>
+    }
+}

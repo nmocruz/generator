@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Configuracao" table="`Configuracao`" schema="`dbo`">
+		<id name="IdConfiguracaoConfig" access="property" column="`id_configuracao_config`">
+			<generator class="native" />
+		</id>
+		<property name="DsConfiguracaoConfig" type="String" column="`ds_configuracao_config`" length="100" />
+		<property name="NmConfiguracaoConfig" type="String" column="`nm_configuracao_config`" length="50" />
+		<property name="VlConfiguracaoConfig" type="String" column="`vl_configuracao_config`" length="100" />
+	</class>
+</hibernate-mapping>

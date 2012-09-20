@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="DesempateDisputaLote" table="`Desempate_Disputa_Lote`" schema="`dbo`">
+		<id name="IdDesempateDisputaLoteDdislot" access="property" column="`id_desempate_disputa_lote_ddislot`">
+			<generator class="assigned" />
+		</id>
+		<property name="DtAlteracaoDdislot" type="DateTime" column="`dt_alteracao_ddislot`" />
+		<property name="DtCadastroDdislot" type="DateTime" column="`dt_cadastro_ddislot`" />
+		<property name="DtFimDesempateDdislot" type="DateTime" column="`dt_fim_desempate_ddislot`" />
+		<property name="DtInicioDesempateDdislot" type="DateTime" column="`dt_inicio_desempate_ddislot`" />
+		<property name="DtMelhorLanceDisputaDdislot" type="DateTime" column="`dt_melhor_lance_disputa_ddislot`" />
+		<property name="VlMelhorLanceDisputaDdislot" type="Decimal" column="`vl_melhor_lance_disputa_ddislot`" />
+		<many-to-one name="FornecedorLicitacao" class="FornecedorLicitacao" column="`id_fornecedor_licitacao_forlic`" not-null="true" fetch="select" />
+		<many-to-one name="LanceLoteLicitacao" class="LanceLoteLicitacao" column="`id_lance_lote_licitacao_llotlic`" not-null="false" fetch="select" />
+		<many-to-one name="LoteLicitacao" class="LoteLicitacao" column="`id_lote_licitacao_lotlic`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

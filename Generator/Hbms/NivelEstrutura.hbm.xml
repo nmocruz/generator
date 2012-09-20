@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="NivelEstrutura" table="`Nivel_Estrutura`" schema="`dbo`">
+		<id name="IdNivelEstruturaNivest" access="property" column="`id_nivel_estrutura_nivest`">
+			<generator class="native" />
+		</id>
+		<property name="DsNivelEstruturaNivest" type="String" column="`ds_nivel_estrutura_nivest`" length="50" />
+		<property name="DtAlteracaoNivest" type="DateTime" column="`dt_alteracao_nivest`" />
+		<property name="DtCadastroNivest" type="DateTime" column="`dt_cadastro_nivest`" />
+		<property name="DtDesativacaoNivest" type="DateTime" column="`dt_desativacao_nivest`" />
+		<set name="EstruturaProdutos" inverse="true">
+			<key column="`id_nivel_estrutura_nivest`" />
+			<one-to-many class="EstruturaProduto" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

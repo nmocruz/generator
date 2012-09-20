@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdutoOrdemCompraSaidaInt" table="`Produto_Ordem_Compra_Saida_Int`" schema="`dbo`">
+		<id name="IdProdOrdCompraPrdocomsi" access="property" column="`id_prod_ord_compra_prdocomsi`">
+			<generator class="native" />
+		</id>
+		<property name="DsObservacaoPrdocomsi" type="String" column="`ds_observacao_prdocomsi`" length="100" />
+		<property name="DtAlteracaoPrdocomsi" type="DateTime" column="`dt_alteracao_prdocomsi`" />
+		<property name="PcIpiProdutoPrdocomsi" type="Decimal" column="`pc_ipi_produto_prdocomsi`" />
+		<property name="QtEmbalagemProdutoPrdocomsi" type="Int32" column="`qt_embalagem_produto_prdocomsi`" />
+		<property name="QtProdOrdCompraPrdocomsi" type="Int32" column="`qt_prod_ord_compra_prdocomsi`" />
+		<property name="TpFreteProdFornecPrdocomsi" type="String" column="`tp_frete_prod_fornec_prdocomsi`" length="1" />
+		<property name="VlPrecoProdutoPrdocomsi" type="Decimal" column="`vl_preco_produto_prdocomsi`" />
+		<many-to-one name="Marca" class="Marca" column="`id_marca`" not-null="true" fetch="select" />
+		<many-to-one name="OrdemCompraSaidaIntegra" class="OrdemCompraSaidaIntegra" column="`id_ordem_compra_ordcomsi`" not-null="true" fetch="select" />
+		<many-to-one name="Produto" class="Produto" column="`id_produto_prod`" not-null="true" fetch="select" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="false" fetch="select" />
+		<many-to-one name="UnidadeProduto" class="UnidadeProduto" column="`id_unidade_compra_uniprd`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

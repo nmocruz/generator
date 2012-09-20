@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="UnidadeFederativa" table="`Unidade_Federativa`" schema="`dbo`">
+		<id name="IdUnidadeFederativaUnifed" access="property" column="`id_unidade_federativa_unifed`" length="2">
+			<generator class="assigned" />
+		</id>
+		<property name="DsUnidadeFederativaUnifed" type="String" column="`ds_unidade_federativa_unifed`" length="25" />
+		<property name="DtAlteracaoUnifed" type="DateTime" column="`dt_alteracao_unifed`" />
+		<property name="DtCadastroUnifed" type="DateTime" column="`dt_cadastro_unifed`" />
+		<property name="DtDesativacaoUnifed" type="DateTime" column="`dt_desativacao_unifed`" />
+		<set name="Cotacaos" inverse="true">
+			<key column="`id_unidade_federativa_unifed`" />
+			<one-to-many class="Cotacao" />
+		</set>
+		<set name="EnderecoPessoas" inverse="true">
+			<key column="`id_unidade_federativa_unifed`" />
+			<one-to-many class="EnderecoPessoa" />
+		</set>
+		<set name="OrdemCompras" inverse="true">
+			<key column="`id_unidade_federativa_unifed`" />
+			<one-to-many class="OrdemCompra" />
+		</set>
+		<many-to-one name="RegiaoGeografica" class="RegiaoGeografica" column="`id_regiao_geografica_reggeo`" not-null="true" fetch="select" />
+		<set name="UnidadeFederativaUsuarioSistemas" inverse="true">
+			<key column="`id_unidade_federativa_unifed`" />
+			<one-to-many class="UnidadeFederativaUsuarioSistema" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

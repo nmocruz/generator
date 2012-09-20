@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="TipoDocumentoLicitacao" table="`Tipo_Documento_Licitacao`" schema="`dbo`">
+		<id name="IdTipoDocLicitacaoTpdlic" access="property" column="`id_tipo_doc_licitacao_tpdlic`">
+			<generator class="native" />
+		</id>
+		<property name="DsTipoDocLicitacaoTpdlic" type="String" column="`ds_tipo_doc_licitacao_tpdlic`" length="50" />
+		<property name="DtAlteracaoTpdlic" type="DateTime" column="`dt_alteracao_tpdlic`" />
+		<property name="DtCadastroTpdlic" type="DateTime" column="`dt_cadastro_tpdlic`" />
+		<property name="DtDesativacaoTpdlic" type="DateTime" column="`dt_desativacao_tpdlic`" />
+		<property name="SnValidadeDocLicitacaoTpdlic" type="Boolean" column="`sn_validade_doc_licitacao_tpdlic`" />
+		<set name="DocumentoLicitacaos" inverse="true">
+			<key column="`id_tipo_doc_licitacao_tpdlic`" />
+			<one-to-many class="DocumentoLicitacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

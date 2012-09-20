@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdutoMarcaComprador" table="`Produto_Marca_Comprador`" schema="`dbo`">
+		<id name="IdProdutoMarcaComprPmcacom" access="property" column="`id_produto_marca_compr_pmcacom`">
+			<generator class="native" />
+		</id>
+		<property name="CdProdutoMarcaComprPmcacom" type="String" column="`cd_produto_marca_compr_pmcacom`" length="15" />
+		<property name="DsProdutoMarcaComprPmcacom" type="String" column="`ds_produto_marca_compr_pmcacom`" length="250" />
+		<property name="DtAlteracaoPmcacom" type="DateTime" column="`dt_alteracao_pmcacom`" />
+		<property name="DtCadastroPmcacom" type="DateTime" column="`dt_cadastro_pmcacom`" />
+		<property name="DtDesativacaoPmcacom" type="DateTime" column="`dt_desativacao_pmcacom`" />
+		<property name="DtPrecoInicialRefPmcacom" type="DateTime" column="`dt_preco_inicial_ref_pmcacom`" />
+		<property name="VlPrecoInicialRefPmcacom" type="Decimal" column="`vl_preco_inicial_ref_pmcacom`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="false" fetch="select" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdutoOrdemCompra" table="`Produto_Ordem_Compra`" schema="`dbo`">
+		<id name="IdProdutoOrdemCompPrdocom" access="property" column="`id_produto_ordem_comp_prdocom`">
+			<generator class="native" />
+		</id>
+		<property name="DtAlteracaoPrdocom" type="DateTime" column="`dt_alteracao_prdocom`" />
+		<property name="PcIpiProdFornecPrdocom" type="Decimal" column="`pc_ipi_prod_fornec_prdocom`" />
+		<property name="QtEmbalagemProdutoPrdocom" type="Int32" column="`qt_embalagem_produto_prdocom`" />
+		<property name="QtProdutoOrdemCompPrdocom" type="Int32" column="`qt_produto_ordem_comp_prdocom`" />
+		<property name="TpFreteProdFornecPrdocom" type="String" column="`tp_frete_prod_fornec_prdocom`" length="1" />
+		<property name="VlPrecoProdutoPrdocom" type="Decimal" column="`vl_preco_produto_prdocom`" />
+		<many-to-one name="OrdemCompra" class="OrdemCompra" column="`id_ordem_compra_ordcom`" not-null="true" fetch="select" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

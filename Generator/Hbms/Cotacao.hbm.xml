@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Cotacao" table="`Cotacao`" schema="`dbo`">
+		<id name="IdCotacaoCot" access="property" column="`id_cotacao_cot`">
+			<generator class="native" />
+		</id>
+		<property name="CdCotacaoCot" type="String" column="`cd_cotacao_cot`" length="15" />
+		<property name="DsComplementoCot" type="String" column="`ds_complemento_cot`" length="50" />
+		<property name="DsCotacaoCot" type="String" column="`ds_cotacao_cot`" length="50" />
+		<property name="DsFamiliaProdutoCot" type="String" column="`ds_familia_produto_cot`" length="500" />
+		<property name="DsObservacaoCot" type="String" column="`ds_observacao_cot`" length="500" />
+		<property name="DsObservacaoTelefoneCot" type="String" column="`ds_observacao_telefone_cot`" length="100" />
+		<property name="DtAlteracaoCot" type="DateTime" column="`dt_alteracao_cot`" />
+		<property name="DtCadastroCot" type="DateTime" column="`dt_cadastro_cot`" />
+		<property name="DtCancelamentoCot" type="DateTime" column="`dt_cancelamento_cot`" />
+		<property name="DtHrFimVigenciaCot" type="DateTime" column="`dt_hr_fim_vigencia_cot`" />
+		<property name="DtHrInicioVigenciaCot" type="DateTime" column="`dt_hr_inicio_vigencia_cot`" />
+		<property name="DtValidadePrecoCot" type="DateTime" column="`dt_validade_preco_cot`" />
+		<property name="NmBairroCot" type="String" column="`nm_bairro_cot`" length="50" />
+		<property name="NmCidadeCot" type="String" column="`nm_cidade_cot`" length="50" />
+		<property name="NmLogradouroCot" type="String" column="`nm_logradouro_cot`" length="60" />
+		<property name="NrCepCot" type="String" column="`nr_cep_cot`" length="8" />
+		<property name="NrRamalCot" type="String" column="`nr_ramal_cot`" length="5" />
+		<property name="NrTelefoneCot" type="String" column="`nr_telefone_cot`" length="18" />
+		<property name="PcValidadeMinimaProdutoCot" type="Double" column="`pc_validade_minima_produto_cot`" />
+		<property name="QtProrrogCotacaoCot" type="Int32" column="`qt_prorrog_cotacao_cot`" />
+		<property name="SnCondPagtoObrigatoriaCot" type="Boolean" column="`sn_cond_pagto_obrigatoria_cot`" />
+		<property name="SnProgEntregaObrigCot" type="Boolean" column="`sn_prog_entrega_obrig_cot`" />
+		<property name="SnReaberturaMapaCot" type="Boolean" column="`sn_reabertura_mapa_cot`" />
+		<property name="SnTipoFreteObrigatorioCot" type="Boolean" column="`sn_tipo_frete_obrigatorio_cot`" />
+		<property name="SnValidMinProdutoObrigCot" type="Boolean" column="`sn_valid_min_produto_obrig_cot`" />
+		<property name="TpFreteCotacaoCot" type="String" column="`tp_frete_cotacao_cot`" length="1" />
+		<property name="TpLogradouroCot" type="String" column="`tp_logradouro_cot`" length="10" />
+		<property name="TpTelefoneCot" type="Int16" column="`tp_telefone_cot`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="false" fetch="select" />
+		<set name="FornecedorCotacaos" inverse="true">
+			<key column="`id_cotacao_cot`" />
+			<one-to-many class="FornecedorCotacao" />
+		</set>
+		<set name="HistoricoStatusCotacaos" inverse="true">
+			<key column="`id_cotacao_cot`" />
+			<one-to-many class="HistoricoStatusCotacao" />
+		</set>
+		<set name="LogTransacaos" inverse="true">
+			<key column="`id_cotacao_cot`" />
+			<one-to-many class="LogTransacao" />
+		</set>
+		<set name="OrdemCompras" inverse="true">
+			<key column="`id_cotacao_cot`" />
+			<one-to-many class="OrdemCompra" />
+		</set>
+		<set name="ProdutoCotacaos" inverse="true">
+			<key column="`id_cotacao_cot`" />
+			<one-to-many class="ProdutoCotacao" />
+		</set>
+		<set name="RequisicaoEntradaIntegras" inverse="true">
+			<key column="`id_cotacao_cot`" />
+			<one-to-many class="RequisicaoEntradaIntegra" />
+		</set>
+		<many-to-one name="SetorComprador" class="SetorComprador" column="`id_setor_comprador_setcom`" not-null="false" fetch="select" />
+		<many-to-one name="TipoCotacao" class="TipoCotacao" column="`id_tipo_cotacao_tpcot`" not-null="true" fetch="select" />
+		<many-to-one name="UnidadeFederativa" class="UnidadeFederativa" column="`id_unidade_federativa_unifed`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

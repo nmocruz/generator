@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="DeParaMarca" table="`DE_PARA_Marca`" schema="`dbo`">
+		<id name="IdDeparaMarcaDpmarca" access="property" column="`id_depara_marca_dpmarca`">
+			<generator class="native" />
+		</id>
+		<property name="CdMarcaSistIntDpmarca" type="String" column="`cd_marca_sist_int_dpmarca`" length="20" />
+		<property name="DtAlteracaoDpmarca" type="DateTime" column="`dt_alteracao_dpmarca`" />
+		<property name="DtFimVigenciaDpmarca" type="DateTime" column="`dt_fim_vigencia_dpmarca`" />
+		<property name="DtIniVigenciaDpmarca" type="DateTime" column="`dt_ini_vigencia_dpmarca`" />
+		<many-to-one name="Marca" class="Marca" column="`id_marca`" not-null="true" fetch="select" />
+		<many-to-one name="PadraoSistemaIntegrado" class="PadraoSistemaIntegrado" column="`id_padrao_sistema_int_psisint`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

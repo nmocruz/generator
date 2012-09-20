@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdutoLoteLicitacao" table="`Produto_Lote_Licitacao`" schema="`dbo`">
+		<id name="IdProdLoteLicitacaoPrdlotlic" access="property" column="`id_prod_lote_licitacao_prdlotlic`">
+			<generator class="native" />
+		</id>
+		<property name="DsComplementarProdutoPrdlotlic" type="String" column="`ds_complementar_produto_prdlotlic`" length="1000" />
+		<property name="DtAlteracaoPrdlotlic" type="DateTime" column="`dt_alteracao_prdlotlic`" />
+		<property name="DtCadastroPrdlotlic" type="DateTime" column="`dt_cadastro_prdlotlic`" />
+		<property name="DtCancelamentoPrdlotlic" type="DateTime" column="`dt_cancelamento_prdlotlic`" />
+		<property name="QtProdLoteLicitacaoPrdlotlic" type="Int32" column="`qt_prod_lote_licitacao_prdlotlic`" />
+		<property name="VlRefProdLoteLicitacaoPrdlotlic" type="Decimal" column="`vl_ref_prod_lote_licitacao_prdlotlic`" />
+		<many-to-one name="LoteLicitacao" class="LoteLicitacao" column="`id_lote_licitacao_lotlic`" not-null="true" fetch="select" />
+		<many-to-one name="Produto" class="Produto" column="`id_produto_prod`" not-null="true" fetch="select" />
+		<set name="ProdutoLanceLoteLicitacaos" inverse="true">
+			<key column="`id_prod_lote_licitacao_prdlotlic`" />
+			<one-to-many class="ProdutoLanceLoteLicitacao" />
+		</set>
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

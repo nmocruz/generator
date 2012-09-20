@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="OrdemCompra" table="`Ordem_Compra`" schema="`dbo`">
+		<id name="IdOrdemCompraOrdcom" access="property" column="`id_ordem_compra_ordcom`">
+			<generator class="native" />
+		</id>
+		<property name="CdOrdemCompraOrdcom" type="String" column="`cd_ordem_compra_ordcom`" length="20" />
+		<property name="DsComplementoOrdcom" type="String" column="`ds_complemento_ordcom`" length="50" />
+		<property name="DsObservacaoOrdcom" type="String" column="`ds_observacao_ordcom`" length="500" />
+		<property name="DsObservacaoTelefoneOrdcom" type="String" column="`ds_observacao_telefone_ordcom`" length="100" />
+		<property name="DtAlteracaoOrdcom" type="DateTime" column="`dt_alteracao_ordcom`" />
+		<property name="DtCadastroOrdcom" type="DateTime" column="`dt_cadastro_ordcom`" />
+		<property name="DtCancelamentoOrdcom" type="DateTime" column="`dt_cancelamento_ordcom`" />
+		<property name="DtPrevisaoEntregaOrdcom" type="DateTime" column="`dt_previsao_entrega_ordcom`" />
+		<property name="NmBairroOrdcom" type="String" column="`nm_bairro_ordcom`" length="50" />
+		<property name="NmCidadeOrdcom" type="String" column="`nm_cidade_ordcom`" length="50" />
+		<property name="NmLogradouroOrdcom" type="String" column="`nm_logradouro_ordcom`" length="60" />
+		<property name="NrCepOrdcom" type="String" column="`nr_cep_ordcom`" length="8" />
+		<property name="NrRamalOrdcom" type="String" column="`nr_ramal_ordcom`" length="5" />
+		<property name="NrTelefoneOrdcom" type="String" column="`nr_telefone_ordcom`" length="18" />
+		<property name="TpLogradouroOrdcom" type="String" column="`tp_logradouro_ordcom`" length="10" />
+		<property name="TpTelefoneOrdcom" type="Int16" column="`tp_telefone_ordcom`" />
+		<many-to-one name="Comprador" class="Comprador" column="`id_comprador_compr`" not-null="true" fetch="select" />
+		<many-to-one name="CondicaoPagamento" class="CondicaoPagamento" column="`id_condicao_pagamento_conpag`" not-null="true" fetch="select" />
+		<many-to-one name="Cotacao" class="Cotacao" column="`id_cotacao_cot`" not-null="true" fetch="select" />
+		<set name="FaturaOrdemCompras" inverse="true">
+			<key column="`id_ordem_compra_ordcom`" />
+			<one-to-many class="FaturaOrdemCompra" />
+		</set>
+		<many-to-one name="Fornecedor" class="Fornecedor" column="`id_fornecedor_fornec`" not-null="true" fetch="select" />
+		<set name="HistoricoStatusOrdemCompras" inverse="true">
+			<key column="`id_ordem_compra_ordcom`" />
+			<one-to-many class="HistoricoStatusOrdemCompra" />
+		</set>
+		<set name="LogTransacaos" inverse="true">
+			<key column="`id_ordem_compra_ordcom`" />
+			<one-to-many class="LogTransacao" />
+		</set>
+		<set name="OrdemCompraEntradaIntegras" inverse="true">
+			<key column="`id_ordem_compra_ordcom`" />
+			<one-to-many class="OrdemCompraEntradaIntegra" />
+		</set>
+		<set name="OrdemCompraSaidaIntegras" inverse="true">
+			<key column="`id_ordem_compra_ordcom`" />
+			<one-to-many class="OrdemCompraSaidaIntegra" />
+		</set>
+		<set name="ProdutoOrdemCompras" inverse="true">
+			<key column="`id_ordem_compra_ordcom`" />
+			<one-to-many class="ProdutoOrdemCompra" />
+		</set>
+		<many-to-one name="UnidadeFederativa" class="UnidadeFederativa" column="`id_unidade_federativa_unifed`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

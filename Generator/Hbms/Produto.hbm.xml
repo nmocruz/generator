@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Produto" table="`Produto`" schema="`dbo`">
+		<id name="IdProdutoProd" access="property" column="`id_produto_prod`">
+			<generator class="native" />
+		</id>
+		<property name="CdProdutoProd" type="String" column="`cd_produto_prod`" length="15" />
+		<property name="DsTecnicaProdutoProd" type="String" column="`ds_tecnica_produto_prod`" length="250" />
+		<property name="DtAlteracaoProd" type="DateTime" column="`dt_alteracao_prod`" />
+		<property name="DtCadastroProd" type="DateTime" column="`dt_cadastro_prod`" />
+		<property name="DtComplementacaoProd" type="DateTime" column="`dt_complementacao_prod`" />
+		<property name="DtDesativacaoProd" type="DateTime" column="`dt_desativacao_prod`" />
+		<property name="DtValidacaoProd" type="DateTime" column="`dt_validacao_prod`" />
+		<property name="QtUnidadeMedidaProd" type="Decimal" column="`qt_unidade_medida_prod`" />
+		<set name="DeParaProdutos" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="DeParaProduto" />
+		</set>
+		<many-to-one name="EstruturaProduto" class="EstruturaProduto" column="`id_estrutura_produto_estprd`" not-null="true" fetch="select" />
+		<set name="ProdutoCompradors" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="ProdutoComprador" />
+		</set>
+		<set name="ProdutoCotacaos" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="ProdutoCotacao" />
+		</set>
+		<set name="ProdutoLoteLicitacaos" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="ProdutoLoteLicitacao" />
+		</set>
+		<set name="ProdutoMarcas" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="ProdutoMarca" />
+		</set>
+		<set name="ProdutoOrdemCompraSaidaInts" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="ProdutoOrdemCompraSaidaInt" />
+		</set>
+		<set name="ProdutoPedidoModelos" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="ProdutoPedidoModelo" />
+		</set>
+		<set name="ProdutoRequisicaoEntradaInts" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="ProdutoRequisicaoEntradaInt" />
+		</set>
+		<set name="RamoAtividadeProdutos" inverse="true">
+			<key column="`id_produto_prod`" />
+			<one-to-many class="RamoAtividadeProduto" />
+		</set>
+		<many-to-one name="UnidadeProduto" class="UnidadeProduto" column="`id_unidade_compra_uniprd`" not-null="true" fetch="select" />
+		<many-to-one name="UnidadeProduto1" class="UnidadeProduto" column="`id_unidade_medida_uniprd`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,500 @@
+﻿<Window x:Class="Generator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="700">
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisiblity"></BooleanToVisibilityConverter>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="4"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="4"></Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="auto" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl    Name="tabControl1" >
+            <TabItem Header="Definições" Name="tabItem9">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Gerar">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="*" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <CheckBox Name="txtViews" Content="Views" IsChecked="{Binding Views}" Grid.Column="1" Grid.Row="1" ></CheckBox>
+                            <CheckBox Name="txtViewModels" Content="ViewModels" IsChecked="{Binding ViewModels}" Grid.Column="1" Grid.Row="2"></CheckBox>
+                            <CheckBox Name="txtMappings" Content="Mappings" IsChecked="{Binding Mappings}" Grid.Column="1" Grid.Row="3"></CheckBox>
+                            <CheckBox Name="txtControllers" Content="Controllers" IsChecked="{Binding ControllerDefinition.Ativo}" Grid.Column="1" Grid.Row="4"></CheckBox>
+                            <CheckBox Name="txtServices" Content="Serviços" IsChecked="{Binding Servicos}" Grid.Column="1" Grid.Row="5"></CheckBox>
+                            <CheckBox Name="txtRepositorios" Content="Repositorios" IsChecked="{Binding RepositoryDefinition.Ativo}" Grid.Column="1" Grid.Row="6"></CheckBox>
+
+                        </Grid>
+
+                    </GroupBox>
+
+                    <GroupBox Header="Entidades" Grid.Row="1" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition  Height="auto" ></RowDefinition>
+                                <RowDefinition  Height="auto" ></RowDefinition>
+
+                                <RowDefinition Height="*" ></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Caminho Hbm's"  />
+                            <TextBox Grid.Column="1" Padding="4" Margin="4,4,68,4" Text="{Binding HbmPath}"  />
+                            <Button Width="60" Command="{Binding Ler}" CommandParameter="{Binding HbmPath}" Content="Ler" Grid.Column="1" HorizontalAlignment="Right" Padding="4" Margin="4" />
+
+                            <CheckBox Grid.Row="1" Command="{Binding SelecionarTodos}" Content="Todos" ></CheckBox>
+
+                            <ListView 
+                                   BorderThickness="0" 
+                                   ItemsSource="{Binding Entidades}"  
+                                   Grid.Row="2" 
+                                   Grid.ColumnSpan="2"  
+                                   Margin="4" 
+                                   Name="dataGrid1" 
+                                   TextSearch.TextPath="Nome">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox  Content="{Binding Nome}" IsChecked="{Binding Ativo}"></CheckBox>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </Grid>
+
+                    </GroupBox>
+                   
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Mapping" Name="tabItem8" DataContext="{Binding MappingDefinition}" Visibility="{Binding ElementName=txtMappings, Path=IsChecked, Converter={StaticResource boolToVisiblity}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Collections" DataContext="{Binding [Collections]}">
+                        <Grid >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Namespace"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="1" Content="Template"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="2" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="3" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+                        </Grid>
+
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="Entity" DataContext="{Binding [Entity]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Namespace"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="1" Content="Template"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="2" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="3" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Views" Name="tabItem1" DataContext="{Binding ViewDefinition}" Visibility="{Binding Path=IsChecked, ElementName=txtViews,  Converter={StaticResource boolToVisiblity}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Label Grid.Row="2" Content="OutputDir"></Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+                    </Grid>
+                    <GroupBox Grid.Row="1" Header="EditView" DataContext="{Binding [EditView]}">
+                        <Grid >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="1" Content="Template"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                          
+
+                        </Grid>
+
+                    </GroupBox>
+                    <GroupBox Grid.Row="2" Header="DetailsView" DataContext="{Binding [DetailsView]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="1" Content="Template"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                          
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="3" Header="RemoveView" DataContext="{Binding [RemoveView]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="1" Content="Template"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                      
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="4" Header="SearchView" DataContext="{Binding [SearchView]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="1" Content="Template"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                         
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Controllers" Name="tabController" DataContext="{Binding ControllerDefinition}" Visibility="{Binding Path=IsChecked, ElementName=txtControllers,  Converter={StaticResource boolToVisiblity}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="1" Header="Controllers" DataContext="{Binding [Controllers]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Modulo"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Modulo}" ></TextBox>
+                            <Label Grid.Row="1" Content="Namespace"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="2" Content="Template"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="3" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="4" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem> 
+            <TabItem Header="ViewModels" Name="tabItem2" DataContext="{Binding ViewModelDefinition}" Visibility="{Binding Path=IsChecked, ElementName=txtViewModels,  Converter={StaticResource boolToVisiblity}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Collections" DataContext="{Binding [Collections]}">
+                        <Grid >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Modulo"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Modulo}" ></TextBox>
+                            <Label Grid.Row="1" Content="Namespace"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="2" Content="Template"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="3" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="4" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+
+                        </Grid>
+
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="Entity" DataContext="{Binding [Entity]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Modulo"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Modulo}" ></TextBox>
+                            <Label Grid.Row="1" Content="Namespace"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="2" Content="Template"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="3" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="4" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Services" Name="tabItem3" DataContext="{Binding ServiceDefinition}" Visibility="{Binding Path=IsChecked, ElementName=txtServices,  Converter={StaticResource boolToVisiblity}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Services" DataContext="{Binding [Services]}">
+                        <Grid >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Modulo"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Modulo}" ></TextBox>
+                            <Label Grid.Row="1" Content="Namespace"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="2" Content="Template"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="3" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="4" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+
+
+
+                        </Grid>
+
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="Interfaces" DataContext="{Binding [Interfaces]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Modulo"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Modulo}" ></TextBox>
+                            <Label Grid.Row="1" Content="Namespace"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="2" Content="Template"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="3" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="4" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Repositorios" Name="tabItem4" DataContext="{Binding RepositoryDefinition}" Visibility="{Binding Path=IsChecked, ElementName=txtRepositorios,  Converter={StaticResource boolToVisiblity}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Repositories" DataContext="{Binding [Repositories]}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Modulo"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Modulo}" ></TextBox>
+                            <Label Grid.Row="1" Content="Namespace"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="2" Content="Template"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="3" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="4" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+
+
+                        </Grid>
+
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="Interfaces" DataContext="{Binding [Interfaces]}" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+                                <RowDefinition Height="auto" ></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Label Content="Modulo"></Label>
+                            <TextBox Grid.Column="1" Text="{Binding Modulo}" ></TextBox>
+                            <Label Grid.Row="1" Content="Namespace"></Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Namespace}" ></TextBox>
+                            <Label Grid.Row="2" Content="Template"></Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TemplatePath}" ></TextBox>
+                            <Label Grid.Row="3" Content="Using Namespaces"></Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding UsingNamespaces}"></TextBox>
+                            <Label Grid.Row="4" Content="OutputDir"></Label>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding OutputDir}" ></TextBox>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1">
+            <Button Width="60" Content="Gerar" Command="{Binding Gerar}" HorizontalAlignment="Right" Margin="4" Padding="4" />
+        </StackPanel>
+    </Grid>
+</Window>

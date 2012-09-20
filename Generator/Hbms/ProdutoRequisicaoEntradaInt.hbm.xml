@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="Entidades.Model" assembly="Entidades" xmlns="urn:nhibernate-mapping-2.2">
+	<class name="ProdutoRequisicaoEntradaInt" table="`Produto_Requisicao_Entrada_Int`" schema="`dbo`">
+		<id name="IdProdReqEntrIntPrdreqei" access="property" column="`id_prod_req_entr_int_prdreqei`">
+			<generator class="native" />
+		</id>
+		<property name="DsObservacaoPrdreqei" type="String" column="`ds_observacao_prdreqei`" length="100" />
+		<property name="DtAlteracaoPrdreqei" type="DateTime" column="`dt_alteracao_prdreqei`" />
+		<property name="QtProdutoRequisicaoPrdreqei" type="Int32" column="`qt_produto_requisicao_prdreqei`" />
+		<property name="VlPrevProdutoPrdreqei" type="Double" column="`vl_prev_produto_prdreqei`" />
+		<many-to-one name="Marca" class="Marca" column="`id_marca`" not-null="false" fetch="select" />
+		<many-to-one name="Produto" class="Produto" column="`id_produto_prod`" not-null="true" fetch="select" />
+		<many-to-one name="ProdutoMarca" class="ProdutoMarca" column="`id_produto_marca_prdmca`" not-null="false" fetch="select" />
+		<many-to-one name="RequisicaoEntradaIntegra" class="RequisicaoEntradaIntegra" column="`id_requisicao_entr_int_reqei`" not-null="true" fetch="select" />
+		<many-to-one name="UsuarioSistema" class="UsuarioSistema" column="`user_id_ususis`" not-null="true" fetch="select" />
+	</class>
+</hibernate-mapping>
