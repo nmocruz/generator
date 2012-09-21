@@ -18,6 +18,7 @@ namespace AGenerator.Templating
         
         #endregion
 
+
         private AppDomain domain;
         private CompilerErrorCollection errorsValue;
         private Encoding fileEncodingValue = Encoding.UTF8;
